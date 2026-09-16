@@ -1,9 +1,19 @@
 <p align="center">
-  <img
-    src="docs/assets/langtrust-logo-github.svg"
-    alt="LangTrust"
-    width="620"
-  >
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="docs/assets/langtrust-logo-github-dark.svg"
+    >
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="docs/assets/langtrust-logo-github-light.svg"
+    >
+    <img
+      src="docs/assets/langtrust-logo-github-light.svg"
+      alt="LangTrust"
+      width="620"
+    >
+  </picture>
 </p>
 
 <p align="center">
