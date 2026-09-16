@@ -284,7 +284,9 @@ The archival snapshot tree-equivalence check has been completed.
 - tree equivalence: **verified**
 
 The release repository URL is https://github.com/rafalgajos/langtrust.
-Zenodo identifiers have not yet been assigned.
+The Zenodo software DOI `10.5281/zenodo.22799188` has been reserved for the `0.2.0` software
+archive; that Zenodo record has not yet been published. The separate Zenodo
+results DOI has not yet been assigned.
 
 ## Version and archival identifiers
 
@@ -295,7 +297,7 @@ Zenodo identifiers have not yet been assigned.
 | Release-preparation lineage (current `0.2.0`) | Packaging/docs/release prep | In progress |
 | Public tag `v0.2.0` | Recommended user software release | Planned |
 | Public tag `experiment-execution-snapshot` | Archival source representation | Established |
-| Zenodo software DOI | Software archive | Planned |
+| Zenodo software DOI `10.5281/zenodo.22799188` | Software archive | Reserved |
 | Zenodo results DOI | Legacy Qwen JSON archive | Planned |
 | SoftwareX article DOI | Scholarly article | Planned |
 | Apache-2.0 | Software license | Established |
@@ -306,7 +308,7 @@ Authors and citation metadata are recorded in `CITATION.cff`.
 
 - Internal/public tree equivalence has been verified for the archival snapshot;
   this establishes source-tree identity, not execution-environment identity.
-- GitHub repository: https://github.com/rafalgajos/langtrust; Zenodo and SoftwareX identifiers are not yet assigned.
+- GitHub repository: https://github.com/rafalgajos/langtrust; Zenodo software DOI `10.5281/zenodo.22799188` is reserved, while the Zenodo results DOI and SoftwareX article DOI are not yet assigned.
 - LangTrust `v0.2.0` is not yet released.
 - The software release candidate is licensed under Apache-2.0.
 - This document establishes the source, runtime, and protocol associated with

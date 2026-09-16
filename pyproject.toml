@@ -37,6 +37,7 @@ dependencies = [
 Homepage = "https://github.com/rafalgajos/langtrust"
 Repository = "https://github.com/rafalgajos/langtrust"
 Issues = "https://github.com/rafalgajos/langtrust/issues"
+DOI = "https://doi.org/10.5281/zenodo.22799188"
 
 [project.scripts]
 langtrust-benchmark = "langtrust.cli.benchmark:main"
