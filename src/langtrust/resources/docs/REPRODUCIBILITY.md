@@ -309,8 +309,9 @@ via the archival snapshot.
 ## Reproducibility limits
 
 - GitHub repository: https://github.com/rafalgajos/langtrust; the archival
-  commit/tag exists and tree equivalence is verified; Zenodo software DOI
-  `10.5281/zenodo.22799188` has been reserved, while the separate Zenodo results DOI has not yet
+  commit/tag exists and tree equivalence is verified; Zenodo software release DOI
+  `10.5281/zenodo.22799188` is published and the all-versions DOI is
+  `10.5281/zenodo.22799187`, while the separate Zenodo results DOI has not yet
   been assigned.
 - The first public software release is `v0.2.0`; the package version is
   `0.2.0`.
@@ -329,7 +330,7 @@ via the archival snapshot.
 | Experiment tree `9c1fd1c…` | Exact source-tree identity | Established |
 | Public tag `v0.2.0` | Recommended user software release | Established |
 | Public tag `experiment-execution-snapshot` | Archival source representation | Established |
-| Zenodo software DOI `10.5281/zenodo.22799188` | Software archive | Reserved |
+| Zenodo software DOI `10.5281/zenodo.22799188` | Software archive | Published |
 | Zenodo results DOI | Legacy Qwen artifact archive | Planned |
 | SoftwareX article DOI | Scholarly article | Planned |
 | Apache-2.0 | Software license | Established |

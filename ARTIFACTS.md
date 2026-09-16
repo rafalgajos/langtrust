@@ -206,9 +206,9 @@ independent of the repository-root legacy `SHA256SUMS`.
 
 ## Citation and archival identifiers
 
-Cite the LangTrust software using `CITATION.cff`. The Zenodo software DOI
-`10.5281/zenodo.22799188` has been reserved for the `0.2.0` software archive; the Zenodo record
-has not yet been published.
+Cite the LangTrust software using `CITATION.cff`. The Zenodo software release DOI
+`10.5281/zenodo.22799188` identifies the published `0.2.0` software archive.
+The all-versions DOI is `10.5281/zenodo.22799187`.
 
 The legacy Qwen result bundle is intended to receive a separate Zenodo
 results DOI. The SoftwareX article DOI, when assigned, will be a third, distinct

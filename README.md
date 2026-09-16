@@ -1,16 +1,68 @@
-# LangTrust
+<p align="center">
+  <img
+    src="docs/assets/langtrust-logo-github.svg"
+    alt="LangTrust"
+    width="620"
+  >
+</p>
 
-LangTrust provides a controlled Polish–English security evaluation framework
-for tool-using LLM agents that jointly varies the language of user
-instructions, tool interfaces, untrusted content, and indirect-prompt-injection
-payloads, while separately measuring model susceptibility, runtime enforcement,
-benign utility, and consequential-action fidelity.
+<p align="center">
+  <strong>Controlled Polish–English security evaluation for tool-using LLM agents</strong>
+</p>
 
-It is research software prepared for curated public release. Related literature
-already covers multilingual, agent-security, IPI, runtime-policy, and
-executable-tool evaluation; LangTrust’s contribution is the controlled PL–EN
-factorial integration and measurement decomposition, not uniqueness of each
-component in isolation.
+<p align="center">
+  <a href="https://doi.org/10.5281/zenodo.22799187">
+    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22799187.svg" alt="Zenodo DOI">
+  </a>
+  <a href="https://github.com/rafalgajos/langtrust/tree/v0.2.0">
+    <img src="https://img.shields.io/badge/release-v0.2.0-2ea44f.svg" alt="Release v0.2.0">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache License 2.0">
+  </a>
+  <a href="https://www.python.org/">
+    <img src="https://img.shields.io/badge/python-%E2%89%A53.11-3776AB.svg" alt="Python >= 3.11">
+  </a>
+</p>
+
+<p align="center">
+  <a href="#installation">Installation</a>
+  ·
+  <a href="#quick-start">Quick start</a>
+  ·
+  <a href="#desktop-gui">Desktop GUI</a>
+  ·
+  <a href="#legacy-qwen-artifacts-and-reproducibility">Reproducibility</a>
+  ·
+  <a href="#citation">Citation</a>
+</p>
+
+LangTrust is open-source research software for controlled security evaluation
+of **tool-using LLM agents** across Polish and English. It independently varies
+the language of user instructions, tool interfaces, untrusted content, and
+indirect-prompt-injection payloads while keeping model susceptibility, runtime
+policy enforcement, benign utility, and consequential-action fidelity as
+separate measurement targets.
+
+A central design principle is that **model behavior, runtime safety, and task
+correctness are not the same quantity**: LangTrust records unauthorized native
+tool requests before enforcement, observes whether runtime policy blocks them,
+and separately evaluates whether consequential actions are correct.
+
+## Highlights
+
+- **Polish–English factorial evaluation** across four independently varied
+  language surfaces.
+- **Indirect prompt injection** delivered through untrusted content rather than
+  directly through the user prompt.
+- **Runtime tool-policy enforcement** with pre-execution blocking of forbidden
+  actions.
+- **Attack and benign scenarios** spanning invoice/mailbox, calendar, and file
+  operations.
+- **Separate security, utility, and action-fidelity metrics** instead of a
+  single aggregate success score.
+- **CLI and desktop GUI workflows**, plus frozen provenance and reproducibility
+  documentation for the reported experiments.
 
 ## Overview
 
@@ -28,6 +80,12 @@ support utility and consequential-action evaluation.
 
 All consequential tool effects occur inside the LangTrust sandbox. No real
 external e-mail, calendar, or filesystem action is performed.
+
+LangTrust does not claim novelty for multilingual evaluation, agent security,
+indirect prompt injection, runtime policy enforcement, or executable-tool
+evaluation individually. Its research contribution is the controlled PL–EN
+factorial integration of these components together with explicit measurement
+decomposition.
 
 ## What LangTrust evaluates
 
@@ -50,43 +108,58 @@ Runtime `ToolPolicyEngine` is active under both baseline and protected prompt
 conditions. The protected condition adds fixed **English SECURITY RULES** (a
 fixed defense-language condition, not language-matched protection).
 
-## Repository status
+## Release and archival status
 
 | Item | Status |
 |---|---|
+| Current public release | `v0.2.0` |
 | Package version | `0.2.0` |
-| First public release | `0.2.0` / tag `v0.2.0` |
 | GitHub repository | https://github.com/rafalgajos/langtrust |
-| Zenodo software DOI | `10.5281/zenodo.22799188` (reserved; record not yet published) |
+| Zenodo release DOI | [`10.5281/zenodo.22799188`](https://doi.org/10.5281/zenodo.22799188) |
+| Zenodo all-versions DOI | [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187) |
 | Zenodo results DOI | Not yet assigned |
 | Software license | Apache-2.0 |
 | Python | `>= 3.11` (validated with 3.11.x) |
 
 ## Installation
 
-Linux/macOS:
+LangTrust `v0.2.0` supports Python **3.11 or newer**.
+
+### Install from the tagged source release
 
 ```bash
+git clone --branch v0.2.0 --depth 1 https://github.com/rafalgajos/langtrust.git
+cd langtrust
+
 python -m venv .venv
 source .venv/bin/activate
 python -m pip install .
 ```
 
-Windows:
+On Windows, activate the environment with:
 
 ```text
-python -m venv .venv
 .venv\Scripts\activate
-python -m pip install .
 ```
 
-If LangTrust is later published to a package index, an equivalent install may
-be `python -m pip install langtrust`. Do not assume that publication exists
-until release metadata says so.
+### Install directly from GitHub
 
-For live benchmarks you also need a local Ollama endpoint and model
-`qwen2.5:14b`. Analysis reproduction from the legacy Qwen JSON artifacts does
-**not** require Ollama or a GPU.
+```bash
+python -m pip install "git+https://github.com/rafalgajos/langtrust.git@v0.2.0"
+```
+
+For development and the full test suite:
+
+```bash
+python -m pip install ".[dev]"
+```
+
+Live benchmarks require a local **Ollama** endpoint and a compatible
+tool-capable model. The documented legacy experiment used `qwen2.5:14b`;
+later validation also covered additional model families.
+
+Analysis reproduction from the preserved legacy Qwen JSON artifacts does
+**not** require Ollama or GPU hardware.
 
 
 ## Running the test suite
@@ -278,7 +351,14 @@ https://github.com/rafalgajos/langtrust/issues
 
 ## Citation
 
-Please cite the LangTrust software using `CITATION.cff`.
+If you use LangTrust in research, cite the software release described in
+`CITATION.cff`.
+
+**LangTrust v0.2.0**
+
+- Release DOI: [`10.5281/zenodo.22799188`](https://doi.org/10.5281/zenodo.22799188)
+- All-versions DOI: [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187)
+- Source tag: [`v0.2.0`](https://github.com/rafalgajos/langtrust/tree/v0.2.0)
 
 Software author:
 
@@ -289,10 +369,10 @@ Engineering, Faculty of Electrical Engineering, Automatic Control and Computer
 Science, Kielce University of Technology, Kielce, Poland.
 
 Software citation metadata is distinct from authorship metadata for associated
-scholarly articles.
+scholarly articles and from the separately planned results archive.
 
-## License status
+## License
 
-LangTrust is licensed under the **Apache License 2.0**. The complete license
-text is provided in `LICENSE`, and the Python package metadata declares the
-SPDX license expression `Apache-2.0`.
+LangTrust is licensed under the **Apache License 2.0**. See [`LICENSE`](LICENSE)
+for the complete license text. Python package metadata declares the SPDX
+expression `Apache-2.0`.
