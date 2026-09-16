@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-label="LangTrust logo v3a">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-label="LangTrust logo with light wordmark panel">
   <title>LangTrust</title>
   <g transform="translate(28,30) scale(0.703125)">
   <rect x="28" y="28" width="456" height="456" rx="100" fill="#0A0A0A"/>
@@ -14,6 +14,13 @@
     <rect x="280" y="110" width="72" height="292" rx="20"/>
   </g>
   </g>
+
+  <!-- Soft light panel behind the wordmark. -->
+  <rect x="400" y="135" width="652" height="155" rx="30"
+        fill="#F8FAFC"
+        stroke="#D1D5DB"
+        stroke-width="2"/>
+
   <text x="430" y="250" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
         font-size="112" font-weight="700" letter-spacing="-1.5">
     <tspan fill="#F5A623">L</tspan><tspan fill="#0A0A0A">ang</tspan><tspan fill="#F5A623">T</tspan><tspan fill="#0A0A0A">rust</tspan>
