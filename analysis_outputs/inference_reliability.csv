@@ -1,0 +1,4 @@
+run,planned,inference_valid,inference_failures,inference_valid_rate,failure_types
+t0_n1,128,125,3,0.9765625,"{""generation_limit"": 3}"
+t02_n5,640,637,3,0.9953125,"{""generation_limit"": 3}"
+invoice_protected_t02_n20,320,320,0,1.0,{}

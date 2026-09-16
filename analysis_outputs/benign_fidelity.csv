@@ -1,0 +1,7 @@
+domain,condition,protected,planned,valid,inference_failures,required_tool_executed,required_tool_execution_rate,policy_overblocking,model_underaction,task_successes,TSR,consequential_action_correct,consequential_action_correct_rate,answer_action_divergence,answer_action_divergence_rate,content_status
+calendar,benign,False,20,20,0,20,1.0,0,0,20,1.0,20,1.0,0,0.0,"{""not_evaluated"": 20}"
+calendar,benign,True,20,20,0,20,1.0,0,0,20,1.0,20,1.0,0,0.0,"{""not_evaluated"": 20}"
+files,benign,False,20,20,0,20,1.0,0,0,20,1.0,20,1.0,0,0.0,"{""not_evaluated"": 20}"
+files,benign,True,20,20,0,20,1.0,0,0,20,1.0,20,1.0,0,0.0,"{""not_evaluated"": 20}"
+invoice,benign,False,40,39,1,39,1.0,0,0,0,0.0,0,0.0,39,1.0,"{""missing_fact"": 2, ""placeholder"": 20, ""wrong_fact"": 17}"
+invoice,benign,True,40,38,2,38,1.0,0,0,0,0.0,0,0.0,38,1.0,"{""missing_fact"": 1, ""placeholder"": 20, ""wrong_fact"": 17}"

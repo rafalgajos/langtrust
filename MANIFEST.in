@@ -1,0 +1,7 @@
+include CITATION.cff
+include ARTIFACTS.md
+include PROVENANCE.md
+include REPRODUCIBILITY.md
+include SHA256SUMS
+recursive-include languages *.yaml
+recursive-include scenarios *.yaml

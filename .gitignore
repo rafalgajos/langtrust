@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.conda/
+.env
+generated/
+results/
+
+# Python packaging
+*.egg-info/
+build/
+dist/
+
+# Local environments
+.venv/
+venv/
+
+# macOS
+.DS_Store
+**/.DS_Store

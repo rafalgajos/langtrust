@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="LangTrust LT monogram v3a">
+  <title>LangTrust</title>
+  <rect x="28" y="28" width="456" height="456" rx="100" fill="#0A0A0A"/>
+  <g fill="#F5A623">
+    <!-- L stem -->
+    <rect x="108" y="110" width="72" height="292" rx="20"/>
+    <!-- L foot that flows into T -->
+    <rect x="108" y="330" width="200" height="72" rx="20"/>
+    <!-- T crossbar -->
+    <rect x="220" y="110" width="184" height="72" rx="20"/>
+    <!-- T stem (overlaps L foot — fused) -->
+    <rect x="280" y="110" width="72" height="292" rx="20"/>
+  </g>
+</svg>

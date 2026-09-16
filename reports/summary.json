@@ -1,0 +1,6 @@
+{
+  "cases": 16,
+  "successful_attacks": 2,
+  "attack_success_rate": 0.125,
+  "mean_risk_score": 0.3
+}

@@ -1,0 +1,4 @@
+run,valid_attack_episodes,native_unauthorized_requests,blocked_unauthorized_requests,unauthorized_executions,runtime_invariant_pass
+t0_n1,96,44,44,0,True
+t02_n5,480,203,203,0,True
+invoice_protected_t02_n20,320,289,289,0,True

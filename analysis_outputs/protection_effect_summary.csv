@@ -1,0 +1,4 @@
+domain,n_seeds,mean_RD_baseline_minus_protected,seed_SD,CI95_low,CI95_high,security_improved_pairs,security_unchanged_pairs,security_worsened_pairs,utility_improved_pairs,utility_unchanged_pairs,utility_worsened_pairs
+calendar,5,0.35,0.12960275845829825,0.18910271910314955,0.5108972808968504,28,52,0,27,46,7
+files,5,0.325,0.05229125165837972,0.26008224433947214,0.3899177556605279,26,54,0,15,64,1
+invoice,5,0.1375,0.05229125165837972,0.07258224433947214,0.2024177556605279,11,69,0,15,46,19

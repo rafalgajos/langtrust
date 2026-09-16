@@ -1,0 +1,44 @@
+{
+  "analysis_version": 1,
+  "git_commit": "a0a6eb937b7bac933b20fcd96269cb53618937b8",
+  "inputs": [
+    {
+      "path": "results/langtrust_3domains_t0_n1_bounded_run2.json",
+      "sha256": "9293e770c8bf2a74769871249fe712797d8997f3eb1738b17511ec8d048babfc",
+      "records": 128
+    },
+    {
+      "path": "results/langtrust_3domains_t02_n5.json",
+      "sha256": "d58ec6608f70e16075d78147200addcfb6142fb0389621b66dde24c1f6a8b819",
+      "records": 640
+    },
+    {
+      "path": "results/invoice_attack_protected_t02_n20.json",
+      "sha256": "cfb77cce1137861c47e1e2f402533071b0a2816224e83d3667c9f20ae4fc8717",
+      "records": 320
+    }
+  ],
+  "invoice_protected_n25_overall": {
+    "n_seeds": 25,
+    "episodes": 400,
+    "vulnerable_episodes": 358,
+    "pooled_UTRR": 0.895,
+    "pooled_Wilson95_low": 0.861108321155689,
+    "pooled_Wilson95_high": 0.9213766927705632,
+    "mean_seed_UTRR": 0.895,
+    "seed_SD": 0.03919768275463913,
+    "seed_t_CI95_low": 0.878819196558885,
+    "seed_t_CI95_high": 0.9111808034411151,
+    "native_unauthorized_requests": 358,
+    "blocked_unauthorized_requests": 358,
+    "unauthorized_executions": 0,
+    "runtime_invariant_pass": true
+  },
+  "methodological_notes": [
+    "Main protection effects use only the paired T=0.2 N=5 experiment.",
+    "The N=25 invoice analysis combines protected invoice attack observations from N=5 and N=20 using disjoint seeds.",
+    "The N=25 invoice follow-up is not an N=25 paired protection comparison.",
+    "Inference failures are reported separately and excluded from security and utility metrics.",
+    "Seed-level t intervals describe stochastic variation under the fixed experimental protocol."
+  ]
+}

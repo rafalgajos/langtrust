@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use LangTrust in your research, please cite this software."
+title: LangTrust
+type: software
+version: 0.2.0
+license: Apache-2.0
+authors:
+  - given-names: Rafał
+    family-names: Gajos
+    orcid: "https://orcid.org/0009-0006-6485-8235"
+    affiliation: >-
+      Department of Computer Science, Electronics and Electrical Engineering,
+      Faculty of Electrical Engineering, Automatic Control and Computer Science,
+      Kielce University of Technology, Kielce, Poland
+abstract: >-
+  LangTrust provides a controlled Polish-English security evaluation framework
+  for tool-using LLM agents that jointly varies the language of user
+  instructions, tool interfaces, untrusted content, and indirect-prompt-injection
+  payloads, while separately measuring model susceptibility, runtime enforcement,
+  benign utility, and consequential-action fidelity.
+keywords:
+  - LLM agents
+  - tool-using agents
+  - indirect prompt injection
+  - agent security
+  - Polish-English evaluation
