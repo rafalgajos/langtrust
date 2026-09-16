@@ -2,7 +2,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 420" role="img" aria-label="LangTrust logo dark mode">
   <title>LangTrust</title>
   <g transform="translate(28,30) scale(0.703125)">
-  <rect x="28" y="28" width="456" height="456" rx="100" fill="#0A0A0A"/>
+  <rect x="28" y="28" width="456" height="456" rx="100" fill="#0A0A0A" stroke="#3D444D" stroke-width="6"/>
   <g fill="#F5A623">
     <!-- L stem -->
     <rect x="108" y="110" width="72" height="292" rx="20"/>

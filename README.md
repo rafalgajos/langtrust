@@ -22,7 +22,7 @@
 
 <p align="center">
   <a href="https://doi.org/10.5281/zenodo.22799187">
-    <img src="https://zenodo.org/badge/DOI/10.5281/zenodo.22799187.svg" alt="Zenodo DOI">
+    <img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22799187-1682D4.svg" alt="DOI: 10.5281/zenodo.22799187">
   </a>
   <a href="https://github.com/rafalgajos/langtrust/tree/v0.2.0">
     <img src="https://img.shields.io/badge/release-v0.2.0-2ea44f.svg" alt="Release v0.2.0">
