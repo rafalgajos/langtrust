@@ -56,7 +56,8 @@ fixed defense-language condition, not language-matched protection).
 |---|---|
 | Package version (release candidate) | `0.2.0` |
 | Planned first public release | `0.2.0` / tag `v0.2.0` |
-| Public GitHub / Zenodo DOIs | Not yet assigned |
+| GitHub repository | https://github.com/rafalgajos/langtrust |
+| Zenodo DOIs | Not yet assigned |
 | Software license | Apache-2.0 |
 | Python | `>= 3.11` (validated with 3.11.x) |
 
@@ -195,8 +196,9 @@ The legacy Qwen experiments were executed from internal revision
 `0.32.15`, and 2 × NVIDIA Quadro RTX 6000.
 
 Later packaging and documentation commits did **not** generate those results.
-The future public repository will use a curated publication history and will
-preserve the exact experiment source tree separately (planned tag
+The LangTrust release repository at
+https://github.com/rafalgajos/langtrust uses a curated publication history and
+will preserve the exact experiment source tree separately (planned tag
 `experiment-execution-snapshot`). Details: `PROVENANCE.md`.
 
 ## Legacy Qwen evaluation snapshot
@@ -267,9 +269,9 @@ as the same experiment.
 
 ## Support
 
-After the public repository is released, bug reports, installation and reproducibility problems, and feature requests should be submitted through **GitHub Issues** in the public LangTrust repository.
+Bug reports, installation and reproducibility problems, and feature requests should be submitted through **GitHub Issues**:
 
-The public issue-tracker URL will be added when the repository is published. No public repository or issue-tracker URL is claimed before that release.
+https://github.com/rafalgajos/langtrust/issues
 
 ## Citation
 

@@ -69,7 +69,7 @@ analysis reproduction.
 
 ## Install LangTrust
 
-After the public repository exists, from the repository root:
+From a checkout of the LangTrust release repository:
 
 Linux/macOS:
 
@@ -302,14 +302,16 @@ For routine analysis reproduction, prefer the public software release (planned
 `v0.2.0`). Use the archival snapshot for historical audit or re-execution
 attempts.
 
-The public LangTrust repository will use a curated publication history and will
-not reproduce the complete internal development history. Exact experiment
-source identity will be preserved separately via the archival snapshot.
+The LangTrust release repository at https://github.com/rafalgajos/langtrust
+uses a curated publication history and does not reproduce the complete internal
+development history. Exact experiment source identity will be preserved
+separately via the archival snapshot.
 
 ## Reproducibility limits
 
-- Public GitHub, Zenodo DOIs, and the public archival commit/tag do not yet
-  exist; tree-equivalence verification is still pending.
+- GitHub repository: https://github.com/rafalgajos/langtrust; Zenodo DOIs and
+  the public archival commit/tag do not yet exist; tree-equivalence verification
+  is still pending.
 - Planned first public software release is `v0.2.0`; the current
   release-candidate package version is `0.2.0`.
 - The software release candidate is licensed under Apache-2.0.

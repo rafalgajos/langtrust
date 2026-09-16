@@ -33,6 +33,11 @@ dependencies = [
 ]
 
 
+[project.urls]
+Homepage = "https://github.com/rafalgajos/langtrust"
+Repository = "https://github.com/rafalgajos/langtrust"
+Issues = "https://github.com/rafalgajos/langtrust/issues"
+
 [project.scripts]
 langtrust-benchmark = "langtrust.cli.benchmark:main"
 langtrust-analyze = "langtrust.cli.analyze:main"

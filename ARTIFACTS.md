@@ -85,10 +85,10 @@ The legacy Qwen experiments were executed from internal development revision
 `a0a6eb937b7bac933b20fcd96269cb53618937b8`, whose Git tree is
 `9c1fd1cde747e6777116566923152d182d4667b2`.
 
-The public LangTrust repository will use a curated publication history and will
-not reproduce the complete private development history. This is intentional.
-The private/internal repository remains the canonical development record and is
-not rewritten for publication.
+The LangTrust release repository at https://github.com/rafalgajos/langtrust
+uses a curated publication history and does not reproduce the complete private
+development history. This is intentional. The private/internal repository
+remains the canonical development record and is not rewritten for publication.
 
 For reproducibility, the exact source tree corresponding to the internal
 experiment revision will be preserved separately from the curated `main`

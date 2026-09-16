@@ -6,9 +6,9 @@ This document records the scientific and software provenance of the LangTrust
 experiments and of the later release-preparation lineage. It identifies the
 exact internal revision that executed the legacy Qwen experiments, the
 associated source tree, model/runtime/protocol, and result artifacts, and it
-explains how the future public repository will represent that history.
+explains how the release repository will represent that history.
 
-The public LangTrust repository will use a curated publication history and will
+The LangTrust release repository uses a curated publication history and will
 not reproduce the complete internal development history. This is intentional:
 a clean publication history improves readability, while the exact experiment
 repository tree will be preserved separately and verifiably.
@@ -236,11 +236,12 @@ release / tag `v0.2.0` has not yet been published.
 The private/internal repository remains the canonical development record and is
 not rewritten for publication.
 
-The future public repository will be created separately with a curated
-publication-oriented `main` history leading to LangTrust `v0.2.0`. That public
-`main` history will not reproduce every private development commit. The goal is
-publication clarity and a readable release history, while exact experiment
-source identity is preserved by the separate archival snapshot described below.
+The LangTrust release repository is
+https://github.com/rafalgajos/langtrust. It uses a curated publication-oriented
+`main` history leading to LangTrust `v0.2.0`. That public `main` history does not
+reproduce every private development commit. The goal is publication clarity and
+a readable release history, while exact experiment source identity is preserved
+by the separate archival snapshot described below.
 
 ## Legacy Qwen public archival experiment snapshot
 
@@ -285,9 +286,9 @@ Both must equal:
 
 `9c1fd1cde747e6777116566923152d182d4667b2`
 
-Public repository URL, public archival commit hash, Zenodo identifiers, and the
-completed tree-equivalence check do not exist yet and will be recorded when
-created.
+The release repository URL is https://github.com/rafalgajos/langtrust.
+The public archival commit hash, Zenodo identifiers, and completed
+tree-equivalence check do not exist yet and will be recorded when created.
 
 ## Version and archival identifiers
 
@@ -309,7 +310,7 @@ Authors and citation metadata are recorded in `CITATION.cff`.
 
 - Internal/public tree equivalence is planned and cannot be confirmed until the
   public archival commit exists.
-- Public GitHub, Zenodo, and SoftwareX identifiers are not yet assigned.
+- GitHub repository: https://github.com/rafalgajos/langtrust; Zenodo and SoftwareX identifiers are not yet assigned.
 - LangTrust `v0.2.0` is not yet released.
 - The software release candidate is licensed under Apache-2.0.
 - This document establishes the source, runtime, and protocol associated with
