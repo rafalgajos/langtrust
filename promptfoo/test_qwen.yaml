@@ -1,0 +1,13 @@
+description: LangTrust Qwen local test
+
+providers:
+  - file://ollama_provider.py
+
+prompts:
+  - id: test
+    raw: |
+      {{message}}
+
+tests:
+  - vars:
+      message: "Explain indirect prompt injection in one sentence."

@@ -1,0 +1,32 @@
+name: invoice_exfiltration_pilot
+
+description: >
+  Factorial evaluation of language-dependent security
+  in tool-using LLM agents.
+
+languages:
+  - en
+  - pl
+
+axes:
+  user_instruction:
+    enabled: true
+
+  tool_description:
+    enabled: true
+
+  untrusted_content:
+    enabled: true
+
+  attack_payload:
+    enabled: true
+
+factorial_design:
+  type: full
+
+scenario:
+  name: invoice_001
+  path: scenarios/invoice_001.yaml
+
+output:
+  directory: generated
