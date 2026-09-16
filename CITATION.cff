@@ -6,6 +6,7 @@ version: 0.2.0
 license: Apache-2.0
 repository-code: "https://github.com/rafalgajos/langtrust"
 doi: "10.5281/zenodo.22799188"
+date-released: 2026-09-16
 authors:
   - given-names: Rafał
     family-names: Gajos

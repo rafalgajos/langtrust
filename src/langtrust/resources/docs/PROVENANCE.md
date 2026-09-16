@@ -222,14 +222,13 @@ These later changes improve packaging, usability, testing, and documentation.
 They do not redefine the provenance of the three legacy Qwen JSON artifacts
 or the separately frozen G9C13 validation archive.
 
-The planned public software release for users is LangTrust `v0.2.0`. The
+The public software release for users is LangTrust `v0.2.0`. The
 archival experiment source snapshot has a different role: exact historical
 source representation for audit/reproduction of the 2026 experiment state.
-Once released, routine users should use the public software release rather than
+Routine users should use the public software release rather than
 the archival snapshot, unless they specifically need the historical tree.
 
-Current release-candidate package version is `0.2.0`. The first public
-release / tag `v0.2.0` has not yet been published.
+The public package version is `0.2.0`, released under tag `v0.2.0`.
 
 ## Curated public Git history
 
@@ -294,8 +293,8 @@ results DOI has not yet been assigned.
 |---|---|---|
 | Internal experiment revision `a0a6eb…` | Actual execution provenance | Established |
 | Experiment tree `9c1fd1c…` | Exact source-tree identity | Established |
-| Release-preparation lineage (current `0.2.0`) | Packaging/docs/release prep | In progress |
-| Public tag `v0.2.0` | Recommended user software release | Planned |
+| Public release lineage (`0.2.0`) | Packaging/docs/release | Established |
+| Public tag `v0.2.0` | Recommended user software release | Established |
 | Public tag `experiment-execution-snapshot` | Archival source representation | Established |
 | Zenodo software DOI `10.5281/zenodo.22799188` | Software archive | Reserved |
 | Zenodo results DOI | Legacy Qwen JSON archive | Planned |
@@ -309,8 +308,8 @@ Authors and citation metadata are recorded in `CITATION.cff`.
 - Internal/public tree equivalence has been verified for the archival snapshot;
   this establishes source-tree identity, not execution-environment identity.
 - GitHub repository: https://github.com/rafalgajos/langtrust; Zenodo software DOI `10.5281/zenodo.22799188` is reserved, while the Zenodo results DOI and SoftwareX article DOI are not yet assigned.
-- LangTrust `v0.2.0` is not yet released.
-- The software release candidate is licensed under Apache-2.0.
+- LangTrust `v0.2.0` is the first public software release.
+- The software release is licensed under Apache-2.0.
 - This document establishes the source, runtime, and protocol associated with
   the reported experiments. It does not claim universal bit-for-bit
   reproducibility across all hardware, OS, or Ollama versions.

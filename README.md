@@ -54,8 +54,8 @@ fixed defense-language condition, not language-matched protection).
 
 | Item | Status |
 |---|---|
-| Package version (release candidate) | `0.2.0` |
-| Planned first public release | `0.2.0` / tag `v0.2.0` |
+| Package version | `0.2.0` |
+| First public release | `0.2.0` / tag `v0.2.0` |
 | GitHub repository | https://github.com/rafalgajos/langtrust |
 | Zenodo software DOI | `10.5281/zenodo.22799188` (reserved; record not yet published) |
 | Zenodo results DOI | Not yet assigned |

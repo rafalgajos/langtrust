@@ -115,7 +115,7 @@ Detailed provenance and public-history construction are documented in
 ## Obtaining the legacy Qwen artifacts
 
 1. Download the legacy Qwen result bundle from the dedicated Zenodo results
-   record (URL/DOI to be added at public release).
+   record (URL/DOI to be added when that Zenodo results record is published).
 2. Confirm the bundle contains the three JSON filenames listed above and
    `SHA256SUMS`.
 3. Verify digests with the commands in [Integrity verification](#integrity-verification).

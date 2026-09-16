@@ -33,7 +33,7 @@ require Ollama, GPU hardware, or model inference.
 
 ### B. Software / protocol reproduction
 
-Install the public LangTrust release (planned `v0.2.0`), inspect packaged
+Install the public LangTrust release (`v0.2.0`), inspect packaged
 language/scenario resources, run the CLIs, and run the test suite.
 
 For software/protocol verification from a source checkout:
@@ -108,8 +108,8 @@ This exercises packaged resources and design construction only.
 ## Obtain the legacy Qwen result artifacts
 
 The legacy Qwen raw JSON files are **not** tracked in Git and are not distributed
-via Git LFS. After public release, download them from the dedicated Zenodo
-results record (DOI/URL recorded at release time).
+via Git LFS. When the dedicated Zenodo results record is published, download them from that
+record; its DOI/URL will be recorded here.
 
 Place in `<artifact-directory>`:
 
@@ -297,8 +297,8 @@ Experiments were executed from the internal revision. The public archival
 commit is a source-tree-equivalent representation of that historical state, not
 the historical execution environment itself.
 
-For routine analysis reproduction, prefer the public software release (planned
-`v0.2.0`). Use the archival snapshot for historical audit or re-execution
+For routine analysis reproduction, prefer the public software release
+(`v0.2.0`). Use the archival snapshot for historical audit or re-execution
 attempts.
 
 The LangTrust release repository at https://github.com/rafalgajos/langtrust
@@ -312,9 +312,9 @@ via the archival snapshot.
   commit/tag exists and tree equivalence is verified; Zenodo software DOI
   `10.5281/zenodo.22799188` has been reserved, while the separate Zenodo results DOI has not yet
   been assigned.
-- Planned first public software release is `v0.2.0`; the current
-  release-candidate package version is `0.2.0`.
-- The software release candidate is licensed under Apache-2.0.
+- The first public software release is `v0.2.0`; the package version is
+  `0.2.0`.
+- The software release is licensed under Apache-2.0.
 - Stochastic T=0.2 reruns are not expected to reproduce exact generations.
 - Model, runtime, and hardware differences may affect fresh re-execution.
 - Analysis reproduction from fixed legacy Qwen JSON is stronger and more
@@ -327,7 +327,7 @@ via the archival snapshot.
 |---|---|---|
 | Internal experiment revision `a0a6eb…` | Actual execution provenance | Established |
 | Experiment tree `9c1fd1c…` | Exact source-tree identity | Established |
-| Public tag `v0.2.0` | Recommended user software release | Planned |
+| Public tag `v0.2.0` | Recommended user software release | Established |
 | Public tag `experiment-execution-snapshot` | Archival source representation | Established |
 | Zenodo software DOI `10.5281/zenodo.22799188` | Software archive | Reserved |
 | Zenodo results DOI | Legacy Qwen artifact archive | Planned |
