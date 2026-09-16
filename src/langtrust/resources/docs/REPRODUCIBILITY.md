@@ -282,21 +282,20 @@ snapshot documentation and release notes once available.
 
 ## Legacy Qwen historical experiment source snapshot
 
-After public release, the exact experiment source tree will be preserved as a
-separate archival root commit outside curated `main` ancestry, planned tag
-`experiment-execution-snapshot`. Its tree must equal `9c1fd1cde747e6777116566923152d182d4667b2`. The public
-commit hash will differ from the internal revision. Tree-equivalence
-verification is a release-time step and is not yet complete.
+The exact experiment source tree is preserved as a separate archival root
+commit `c8ce0efd303eb618b1cfb84e8869a3d90bd050fc` outside curated `main` ancestry, tagged
+`experiment-execution-snapshot`. Its tree is `9c1fd1cde747e6777116566923152d182d4667b2`. The public commit hash
+differs from the internal revision, and tree equivalence has been verified.
 
-Conceptual checkout after the tag exists:
+Checkout:
 
 ```bash
 git checkout experiment-execution-snapshot
 ```
 
-Experiments were executed from the internal revision. The future public
-archival commit is a source-tree-equivalent representation of that historical
-state, not the historical execution environment itself.
+Experiments were executed from the internal revision. The public archival
+commit is a source-tree-equivalent representation of that historical state, not
+the historical execution environment itself.
 
 For routine analysis reproduction, prefer the public software release (planned
 `v0.2.0`). Use the archival snapshot for historical audit or re-execution
@@ -304,14 +303,14 @@ attempts.
 
 The LangTrust release repository at https://github.com/rafalgajos/langtrust
 uses a curated publication history and does not reproduce the complete internal
-development history. Exact experiment source identity will be preserved
-separately via the archival snapshot.
+development history. Exact experiment source identity is preserved separately
+via the archival snapshot.
 
 ## Reproducibility limits
 
-- GitHub repository: https://github.com/rafalgajos/langtrust; Zenodo DOIs and
-  the public archival commit/tag do not yet exist; tree-equivalence verification
-  is still pending.
+- GitHub repository: https://github.com/rafalgajos/langtrust; the archival
+  commit/tag exists and tree equivalence is verified; Zenodo DOIs have not yet
+  been assigned.
 - Planned first public software release is `v0.2.0`; the current
   release-candidate package version is `0.2.0`.
 - The software release candidate is licensed under Apache-2.0.
@@ -328,7 +327,7 @@ separately via the archival snapshot.
 | Internal experiment revision `a0a6eb…` | Actual execution provenance | Established |
 | Experiment tree `9c1fd1c…` | Exact source-tree identity | Established |
 | Public tag `v0.2.0` | Recommended user software release | Planned |
-| Public tag `experiment-execution-snapshot` | Archival source representation | Planned |
+| Public tag `experiment-execution-snapshot` | Archival source representation | Established |
 | Zenodo results / software DOIs | Artifact and software archives | Planned |
 | SoftwareX article DOI | Scholarly article | Planned |
 | Apache-2.0 | Software license | Established |

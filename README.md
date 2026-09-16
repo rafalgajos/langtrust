@@ -197,9 +197,11 @@ The legacy Qwen experiments were executed from internal revision
 
 Later packaging and documentation commits did **not** generate those results.
 The LangTrust release repository at
-https://github.com/rafalgajos/langtrust uses a curated publication history and
-will preserve the exact experiment source tree separately (planned tag
-`experiment-execution-snapshot`). Details: `PROVENANCE.md`.
+https://github.com/rafalgajos/langtrust uses a curated publication history.
+The exact experiment source tree is preserved separately by archival root
+commit `c8ce0efd303eb618b1cfb84e8869a3d90bd050fc`, tagged `experiment-execution-snapshot`. Its Git tree is
+`9c1fd1cde747e6777116566923152d182d4667b2`, matching the internal experiment tree exactly. Details:
+`PROVENANCE.md`.
 
 ## Legacy Qwen evaluation snapshot
 

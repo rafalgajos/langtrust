@@ -245,26 +245,25 @@ by the separate archival snapshot described below.
 
 ## Legacy Qwen public archival experiment snapshot
 
-Separately from curated `main` ancestry, the public repository will contain an
-archival root commit that preserves the exact source tree of internal revision
-`a0a6eb937b7bac933b20fcd96269cb53618937b8`.
+Separately from curated `main` ancestry, the public repository contains
+archival root commit `c8ce0efd303eb618b1cfb84e8869a3d90bd050fc`, which preserves the exact source tree of internal
+revision `a0a6eb937b7bac933b20fcd96269cb53618937b8`.
 
-Planned public tag:
+Public tag:
 
 `experiment-execution-snapshot`
 
 That archival commit:
 
-- will not be an ancestor of curated public `main`;
-- will have a different commit hash because it belongs to a new public Git
-  history;
-- must have Git tree object `9c1fd1cde747e6777116566923152d182d4667b2`.
+- is not an ancestor of curated public `main`;
+- has a different commit hash because it belongs to a new public Git history;
+- has Git tree object `9c1fd1cde747e6777116566923152d182d4667b2`.
 
-The experiments were executed from the internal revision. The future public
-archival commit is a source-tree-equivalent representation of that historical
-state; it is not itself claimed as the execution environment.
+The experiments were executed from the internal revision. The public archival
+commit is a source-tree-equivalent representation of that historical state; it
+is not itself claimed as the execution environment.
 
-## Verification before release
+## Archival snapshot verification
 
 Already verified in the internal record:
 
@@ -274,21 +273,18 @@ Already verified in the internal record:
 - no content diff for canonical `languages/` and `scenarios/` between the
   experiment revision and the current release-preparation HEAD.
 
-Before public release, verify that the public archival commit tree equals the
-internal experiment tree:
+The archival snapshot tree-equivalence check has been completed.
 
-```bash
-git rev-parse a0a6eb937b7bac933b20fcd96269cb53618937b8^{tree}
-git rev-parse <PUBLIC_ARCHIVAL_COMMIT>^{tree}
-```
-
-Both must equal:
-
-`9c1fd1cde747e6777116566923152d182d4667b2`
+- internal experiment revision:
+  `a0a6eb937b7bac933b20fcd96269cb53618937b8`
+- internal experiment tree: `9c1fd1cde747e6777116566923152d182d4667b2`
+- public archival commit: `c8ce0efd303eb618b1cfb84e8869a3d90bd050fc`
+- public archival tree: `9c1fd1cde747e6777116566923152d182d4667b2`
+- public tag: `experiment-execution-snapshot`
+- tree equivalence: **verified**
 
 The release repository URL is https://github.com/rafalgajos/langtrust.
-The public archival commit hash, Zenodo identifiers, and completed
-tree-equivalence check do not exist yet and will be recorded when created.
+Zenodo identifiers have not yet been assigned.
 
 ## Version and archival identifiers
 
@@ -298,7 +294,7 @@ tree-equivalence check do not exist yet and will be recorded when created.
 | Experiment tree `9c1fd1c…` | Exact source-tree identity | Established |
 | Release-preparation lineage (current `0.2.0`) | Packaging/docs/release prep | In progress |
 | Public tag `v0.2.0` | Recommended user software release | Planned |
-| Public tag `experiment-execution-snapshot` | Archival source representation | Planned |
+| Public tag `experiment-execution-snapshot` | Archival source representation | Established |
 | Zenodo software DOI | Software archive | Planned |
 | Zenodo results DOI | Legacy Qwen JSON archive | Planned |
 | SoftwareX article DOI | Scholarly article | Planned |
@@ -308,8 +304,8 @@ Authors and citation metadata are recorded in `CITATION.cff`.
 
 ## Limitations of provenance claims
 
-- Internal/public tree equivalence is planned and cannot be confirmed until the
-  public archival commit exists.
+- Internal/public tree equivalence has been verified for the archival snapshot;
+  this establishes source-tree identity, not execution-environment identity.
 - GitHub repository: https://github.com/rafalgajos/langtrust; Zenodo and SoftwareX identifiers are not yet assigned.
 - LangTrust `v0.2.0` is not yet released.
 - The software release candidate is licensed under Apache-2.0.

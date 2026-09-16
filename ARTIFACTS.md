@@ -91,15 +91,14 @@ development history. This is intentional. The private/internal repository
 remains the canonical development record and is not rewritten for publication.
 
 For reproducibility, the exact source tree corresponding to the internal
-experiment revision will be preserved separately from the curated `main`
-history as an archival root commit (outside the curated `main` ancestry),
-tagged `experiment-execution-snapshot`. Before public release, its Git tree
-object will be verified to match the internal experiment tree exactly
-(`9c1fd1cde747e6777116566923152d182d4667b2`).
+experiment revision is preserved separately from the curated `main` history as
+archival root commit `c8ce0efd303eb618b1cfb84e8869a3d90bd050fc` (outside the curated `main` ancestry), tagged
+`experiment-execution-snapshot`. Its Git tree is `9c1fd1cde747e6777116566923152d182d4667b2` and has been verified
+to match the internal experiment tree exactly.
 
-The archival commit will have a different commit hash because it belongs to a
-new public Git history. It preserves the historical source tree verbatim and is
-not itself claimed as the environment in which the experiments were executed.
+The archival commit has a different commit hash because it belongs to a new
+public Git history. It preserves the historical source tree verbatim and is not
+itself claimed as the environment in which the experiments were executed.
 
 Historical development reports or intermediate analysis files present in that
 archival tree are not the legacy Qwen publication results. The legacy Qwen
