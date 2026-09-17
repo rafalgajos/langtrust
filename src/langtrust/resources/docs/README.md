@@ -137,19 +137,6 @@ Runtime `ToolPolicyEngine` is active under both baseline and protected prompt
 conditions. The protected condition adds fixed **English SECURITY RULES** (a
 fixed defense-language condition, not language-matched protection).
 
-## Release and archival status
-
-| Item | Status |
-|---|---|
-| Current public release | `v0.2.0` |
-| Package version | `0.2.0` |
-| GitHub repository | https://github.com/rafalgajos/langtrust |
-| Zenodo release DOI | [`10.5281/zenodo.22799188`](https://doi.org/10.5281/zenodo.22799188) |
-| Zenodo all-versions DOI | [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187) |
-| Zenodo results DOI | Not yet assigned |
-| Software license | Apache-2.0 |
-| Python | `>= 3.11` (validated with 3.11.x) |
-
 ## Installation
 
 LangTrust `v0.2.0` supports Python **3.11 or newer**.
@@ -191,16 +178,20 @@ Analysis reproduction from the preserved legacy Qwen JSON artifacts does
 **not** require Ollama or GPU hardware.
 
 
-## Running the test suite
+## Quick start
 
-From a source checkout, install the development dependencies and run the test suite:
+### Benchmark dry run
+
+No model inference:
 
 ```bash
-python -m pip install ".[dev]"
-python -m pytest
+langtrust-benchmark \
+  --dry-run \
+  --pair invoice_email_001 \
+  --condition attack \
+  --protected true \
+  --repeats 1
 ```
-
-The pytest configuration is defined in `pyproject.toml` and uses the repository `tests/` directory.
 
 ## Desktop GUI
 
@@ -239,74 +230,53 @@ The launcher always invokes the `sys.executable` from the environment where
 system-wide installer; behavior of `.desktop` trust prompts can vary by
 desktop environment.
 
-## Quick start
+## Architecture
 
-### Benchmark dry run
-
-No model inference:
-
-```bash
-langtrust-benchmark \
-  --dry-run \
-  --pair invoice_email_001 \
-  --condition attack \
-  --protected true \
-  --repeats 1
+```text
+Legitimate user task --------\
+                              \
+                               v
+                         Agent / LLM
+                               ^
+                              /
+Untrusted content / IPI -----/
+                               |
+                               v
+                     Native tool request
+                               |
+                               v
+                      ToolPolicyEngine
+                               |
+                               v
+                  Sandboxed tool execution
+                               |
+                               v
+                    Evaluation and metrics
 ```
 
-### Reproduce the legacy Qwen analysis
+Indirect prompt-injection content is presented to the agent as untrusted
+content rather than as part of the legitimate user task. Consequential native
+tool requests are evaluated by the runtime `ToolPolicyEngine` before sandbox
+execution.
 
-The `langtrust-analyze` command reproduces the preserved legacy single-model
-Qwen analysis. It does not analyze the later G9C13 multi-model validation study.
+This separation allows LangTrust to measure **model susceptibility**, **runtime
+blocking**, **task success**, and **consequential-action fidelity** as distinct
+properties rather than collapsing them into a single success metric.
 
-After downloading the legacy Qwen result JSON files and `SHA256SUMS` into a
-local directory (see `ARTIFACTS.md` / Zenodo results record once published):
+## Development and testing
+
+From a source checkout, install the development dependencies and run the test suite:
 
 ```bash
-ARTIFACT_DIR="$HOME/langtrust-artifacts"
-OUTDIR="$HOME/langtrust-analysis"
-
-langtrust-analyze \
-  --t0 "$ARTIFACT_DIR/langtrust_3domains_t0_n1_bounded_run2.json" \
-  --main "$ARTIFACT_DIR/langtrust_3domains_t02_n5.json" \
-  --follow "$ARTIFACT_DIR/invoice_attack_protected_t02_n20.json" \
-  --outdir "$OUTDIR"
+python -m pip install ".[dev]"
+python -m pytest
 ```
 
-Verify digests with `SHA256SUMS` before analysis (`sha256sum -c` on Linux,
-`shasum -a 256 -c` on macOS). Full workflow: `REPRODUCIBILITY.md`.
+The pytest configuration is defined in `pyproject.toml` and uses the repository `tests/` directory.
 
-## Legacy Qwen artifacts and reproducibility
+## Research results and reproducibility
 
-The three legacy Qwen experiment JSON files are **not** tracked in Git. They
-are intended for a dedicated Zenodo results deposit. Checksums and roles:
-
-- `ARTIFACTS.md` — artifact inventory and analysis workflow
-- `SHA256SUMS` — SHA-256 digests
-- `REPRODUCIBILITY.md` — install, analysis reproduction, and re-execution guidance
-- `analysis_outputs/` — legacy Qwen derived tables and summaries
-
-For this legacy workflow, reproducibility is based on analysis reproduction
-from the fixed Qwen JSON snapshots. Fresh stochastic T=0.2 reruns are not
-expected to reproduce those files byte-for-byte.
-
-## Legacy Qwen experiment provenance
-
-The legacy Qwen experiments were executed from internal revision
-`a0a6eb937b7bac933b20fcd96269cb53618937b8` (tree
-`9c1fd1cde747e6777116566923152d182d4667b2`), using `qwen2.5:14b` (full digest
-`7cdf5a0187d5c58cc5d369b255592f7841d1c4696d45a8c8a9489440385b22f6`), Ollama
-`0.32.15`, and 2 × NVIDIA Quadro RTX 6000.
-
-Later packaging and documentation commits did **not** generate those results.
-The LangTrust release repository at
-https://github.com/rafalgajos/langtrust uses a curated publication history.
-The exact experiment source tree is preserved separately by archival root
-commit `c8ce0efd303eb618b1cfb84e8869a3d90bd050fc`, tagged `experiment-execution-snapshot`. Its Git tree is
-`9c1fd1cde747e6777116566923152d182d4667b2`, matching the internal experiment tree exactly. Details:
-`PROVENANCE.md`.
-
-## Legacy Qwen evaluation snapshot
+### Legacy Qwen evaluation snapshot
 
 Main stochastic experiment (T=0.2, N=5; inference-valid attack episodes):
 
@@ -334,7 +304,59 @@ independent samples; seed CIs describe protocol stochasticity, not population
 generalization; `done_reason="length"` at the generation cap is
 inference-invalid / censored with no favorable retry.
 
-## G9C13 multi-model validation study
+### Legacy Qwen artifacts and reproducibility
+
+The three legacy Qwen experiment JSON files are **not** tracked in Git. They
+are intended for a dedicated Zenodo results deposit. Checksums and roles:
+
+- `ARTIFACTS.md` — artifact inventory and analysis workflow
+- `SHA256SUMS` — SHA-256 digests
+- `REPRODUCIBILITY.md` — install, analysis reproduction, and re-execution guidance
+- `analysis_outputs/` — legacy Qwen derived tables and summaries
+
+For this legacy workflow, reproducibility is based on analysis reproduction
+from the fixed Qwen JSON snapshots. Fresh stochastic T=0.2 reruns are not
+expected to reproduce those files byte-for-byte.
+
+### Legacy Qwen experiment provenance
+
+The legacy Qwen experiments were executed from internal revision
+`a0a6eb937b7bac933b20fcd96269cb53618937b8` (tree
+`9c1fd1cde747e6777116566923152d182d4667b2`), using `qwen2.5:14b` (full digest
+`7cdf5a0187d5c58cc5d369b255592f7841d1c4696d45a8c8a9489440385b22f6`), Ollama
+`0.32.15`, and 2 × NVIDIA Quadro RTX 6000.
+
+Later packaging and documentation commits did **not** generate those results.
+The LangTrust release repository at
+https://github.com/rafalgajos/langtrust uses a curated publication history.
+The exact experiment source tree is preserved separately by archival root
+commit `c8ce0efd303eb618b1cfb84e8869a3d90bd050fc`, tagged `experiment-execution-snapshot`. Its Git tree is
+`9c1fd1cde747e6777116566923152d182d4667b2`, matching the internal experiment tree exactly. Details:
+`PROVENANCE.md`.
+
+### Reproduce the legacy Qwen analysis
+
+The `langtrust-analyze` command reproduces the preserved legacy single-model
+Qwen analysis. It does not analyze the later G9C13 multi-model validation study.
+
+After downloading the legacy Qwen result JSON files and `SHA256SUMS` into a
+local directory (see `ARTIFACTS.md` / Zenodo results record once published):
+
+```bash
+ARTIFACT_DIR="$HOME/langtrust-artifacts"
+OUTDIR="$HOME/langtrust-analysis"
+
+langtrust-analyze \
+  --t0 "$ARTIFACT_DIR/langtrust_3domains_t0_n1_bounded_run2.json" \
+  --main "$ARTIFACT_DIR/langtrust_3domains_t02_n5.json" \
+  --follow "$ARTIFACT_DIR/invoice_attack_protected_t02_n20.json" \
+  --outdir "$OUTDIR"
+```
+
+Verify digests with `SHA256SUMS` before analysis (`sha256sum -c` on Linux,
+`shasum -a 256 -c` on macOS). Full workflow: `REPRODUCIBILITY.md`.
+
+### G9C13 multi-model validation study
 
 The SoftwareX validation study is the separately frozen G9C13 multi-model
 experiment. It uses Qwen 2.5 14B, Llama 3.1 8B, and Mistral 7B from the common
@@ -358,6 +380,19 @@ Its internal `SHA256SUMS.txt` contains 96 verified entries.
 G9C13 is distinct from the legacy Qwen dataset consumed by
 `langtrust-analyze`; the two evidence generations must not be pooled or treated
 as the same experiment.
+
+## Release and archival status
+
+| Item | Status |
+|---|---|
+| Current public release | `v0.2.0` |
+| Package version | `0.2.0` |
+| GitHub repository | https://github.com/rafalgajos/langtrust |
+| Zenodo release DOI | [`10.5281/zenodo.22799188`](https://doi.org/10.5281/zenodo.22799188) |
+| Zenodo all-versions DOI | [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187) |
+| Zenodo results DOI | Not yet assigned |
+| Software license | Apache-2.0 |
+| Python | `>= 3.11` (validated with 3.11.x) |
 
 ## Repository structure
 
