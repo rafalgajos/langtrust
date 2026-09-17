@@ -41,7 +41,13 @@ def test_make_live_config_defaults_and_validation():
     assert isinstance(config, BenchmarkRunConfig)
     assert config.dry_run is False
     assert config.output == DEFAULT_LIVE_OUTPUT
-    assert Path(config.output).name not in AUTHORITATIVE_RESULT_BASENAMES
+
+    default_output = Path(config.output)
+    assert default_output.is_absolute()
+    assert default_output == (
+        Path.home() / "LangTrust" / "results" / "langtrust_gui_live.json"
+    )
+    assert default_output.name not in AUTHORITATIVE_RESULT_BASENAMES
     assert config.condition == "attack"
     assert config.protected == "true"
     assert config.repeats == 1
@@ -55,6 +61,20 @@ def test_make_live_config_defaults_and_validation():
         make_live_config(model="")
     with pytest.raises(ValueError, match="--model must be a non-empty string"):
         make_live_config(model="   ")
+
+
+def test_default_live_output_is_independent_of_working_directory(tmp_path, monkeypatch):
+    expected = Path(DEFAULT_LIVE_OUTPUT)
+    monkeypatch.chdir(tmp_path)
+
+    config = make_live_config(
+        pairs=["invoice_email_001"],
+        condition="attack",
+        protected="true",
+    )
+
+    assert Path(config.output) == expected
+    assert Path(config.output).is_absolute()
 
 
 def test_live_module_has_no_direct_core_imports():

@@ -23,7 +23,9 @@ from langtrust.app import (
     validate_config,
 )
 
-DEFAULT_LIVE_OUTPUT = "results/langtrust_gui_live.json"
+DEFAULT_LIVE_OUTPUT = str(
+    Path.home() / "LangTrust" / "results" / "langtrust_gui_live.json"
+)
 
 LIVE_RUN_WARNING = (
     "Live Run performs actual model inference.\n"
