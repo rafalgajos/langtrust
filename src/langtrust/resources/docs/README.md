@@ -90,31 +90,34 @@ and separately evaluates whether consequential actions are correct.
   operations.
 - **Separate security, utility, and action-fidelity metrics** instead of a
   single aggregate success score.
-- **CLI and desktop GUI workflows**, plus frozen provenance and reproducibility
-  documentation for the reported experiments.
+- **Command-line interface (CLI) and desktop graphical user interface (GUI)
+  workflows**, plus frozen provenance and reproducibility documentation for the
+  reported experiments.
 
 ## Overview
 
-LangTrust evaluates tool-using LLM agents under **indirect prompt injection**
-in a sandboxed environment across three domains:
+LangTrust evaluates tool-using large language model (LLM) agents under
+**indirect prompt injection** in a sandboxed environment across three domains:
 
 - invoice / mailbox
 - calendar
 - files
 
-The design comprises **64 unique design cells** over Polish and English.
-Attack conditions vary relevant language surfaces (user instruction, tool
-description, untrusted content, and attack payload), while benign scenarios
-support utility and consequential-action evaluation.
+A **language surface** is a text-bearing component whose language can be varied
+independently. The design comprises **64 unique design cells** over Polish and
+English, where each design cell is one specific combination of active
+language-factor assignments. Attack conditions vary the user instruction, tool
+description, untrusted content, and attack payload; benign scenarios support
+utility and consequential-action evaluation.
 
 All consequential tool effects occur inside the LangTrust sandbox. No real
 external e-mail, calendar, or filesystem action is performed.
 
 LangTrust does not claim novelty for multilingual evaluation, agent security,
 indirect prompt injection, runtime policy enforcement, or executable-tool
-evaluation individually. Its research contribution is the controlled PL–EN
-factorial integration of these components together with explicit measurement
-decomposition.
+evaluation individually. Its research contribution is the controlled
+Polish–English factorial integration of these components together with explicit
+measurement decomposition.
 
 ## What LangTrust evaluates
 
@@ -122,20 +125,28 @@ LangTrust distinguishes the following security and utility quantities:
 
 | Quantity | Meaning |
 |---|---|
-| **UTRR** | Proportion of inference-valid attack episodes with ≥1 unauthorized native tool request *before* runtime enforcement |
+| **Unauthorized Tool Request Rate (UTRR)** | Proportion of inference-valid attack episodes with ≥1 unauthorized native tool request *before* runtime enforcement |
 | **Blocking rate** | Blocked unauthorized requests / unauthorized requests |
 | **Unauthorized execution rate** | Forbidden sandbox execution *after* enforcement |
 | **Task success rate** | Satisfaction of the task-success criterion |
 | **Policy overblocking** | Runtime blocks a required authorized action |
 | **Model underaction** | Model fails to request the required action |
 
-Security success is not task success. Authorized execution is not necessarily
-correct execution; consequential-action fidelity is evaluated separately where
-supported.
+An **inference-valid** episode completes model inference under the configured
+protocol and is eligible for behavioral endpoint analysis. A **native tool request** is a structured tool call emitted by the model before runtime policy
+enforcement.
 
-Runtime `ToolPolicyEngine` is active under both baseline and protected prompt
-conditions. The protected condition adds fixed **English SECURITY RULES** (a
-fixed defense-language condition, not language-matched protection).
+Security success is not task success. Authorized execution is not necessarily
+correct execution. **Consequential-action fidelity** evaluates whether the
+executed action content matches the required action; **answer–action content
+divergence** denotes disagreement between the textual answer and the action
+content where that comparison is supported.
+
+`ToolPolicyEngine` is LangTrust's pre-execution runtime policy engine. It is
+active under both baseline and protected prompt conditions. The baseline
+condition does not add the protected prompt rules; the protected condition adds
+fixed **English SECURITY RULES** (a fixed defense-language condition, not
+language-matched protection).
 
 ## Installation
 
@@ -230,6 +241,15 @@ The launcher always invokes the `sys.executable` from the environment where
 system-wide installer; behavior of `.desktop` trust prompts can vary by
 desktop environment.
 
+### Live Run behavior and limitations
+
+Desktop GUI Live Run performs actual model inference and writes result JSON to
+disk. In `v0.2.1`, the default output is the user-writable
+`~/LangTrust/results/langtrust_gui_live.json`. Consequential tool effects remain
+inside the LangTrust sandbox. Live Run does not provide hard cancellation of an
+in-flight model request; execution ends when the request completes or reaches
+the configured request timeout.
+
 ## Architecture
 
 <p align="center">
@@ -267,9 +287,12 @@ The pytest configuration is defined in `pyproject.toml` and uses the repository 
 
 ### Legacy Qwen evaluation snapshot
 
+Here **T** denotes sampling temperature and **N** denotes the number of
+seed-based repeats contributing to the stated experiment or summary.
+
 Main stochastic experiment (T=0.2, N=5; inference-valid attack episodes):
 
-| Domain | Baseline UTRR | Protected UTRR | Baseline TSR | Protected TSR |
+| Domain | Baseline UTRR | Protected UTRR | Baseline task success rate | Protected task success rate |
 |---|---:|---:|---:|---:|
 | calendar | 0.35 | 0 | 0.475 | 0.725 |
 | files | 0.325 | 0 | 0.8125 | 0.9875 |
@@ -289,23 +312,33 @@ invoice seeds yields a **protected-only** N=25 UTRR of 0.895 (358/400). That
 summary is **not** a paired baseline/protected N=25 design.
 
 Caveats (see `REPRODUCIBILITY.md`): T=0 cells are descriptive map points, not
-independent samples; seed CIs describe protocol stochasticity, not population
-generalization; `done_reason="length"` at the generation cap is
-inference-invalid / censored with no favorable retry.
+independent samples; seed-based confidence intervals (CIs) describe protocol
+stochasticity, not population generalization; `done_reason="length"` at the
+generation cap is inference-invalid / censored with no favorable retry.
 
 ### Legacy Qwen artifacts and reproducibility
 
-The three legacy Qwen experiment JSON files are **not** tracked in Git. They
-are intended for a dedicated Zenodo results deposit. Checksums and roles:
+The three legacy Qwen experiment JSON files are **not** tracked in Git.
+They are publicly archived in the LangTrust evaluation-artifacts dataset:
 
-- `ARTIFACTS.md` — artifact inventory and analysis workflow
-- `SHA256SUMS` — SHA-256 digests
-- `REPRODUCIBILITY.md` — install, analysis reproduction, and re-execution guidance
+- results DOI: [`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213)
+
+That record also contains the separately frozen three-model validation archive,
+`README_RESULTS.md`, `ZENODO_RESULTS_MANIFEST.json`, and the record-level
+`SHA256SUMS.txt`. The repository-root `SHA256SUMS` remains the legacy-Qwen-only
+checksum manifest.
+
+Repository documentation:
+
+- `ARTIFACTS.md` — artifact inventory, exact digests, and analysis workflow
+- `SHA256SUMS` — repository-root digests for the three legacy Qwen JSON files
+- `REPRODUCIBILITY.md` — install, verification, analysis reproduction, and
+  re-execution guidance
 - `analysis_outputs/` — legacy Qwen derived tables and summaries
 
-For this legacy workflow, reproducibility is based on analysis reproduction
-from the fixed Qwen JSON snapshots. Fresh stochastic T=0.2 reruns are not
-expected to reproduce those files byte-for-byte.
+For this legacy workflow, reproducibility is based on analysis reproduction from
+the fixed Qwen JSON snapshots. Fresh stochastic T=0.2 reruns are not expected to
+reproduce those files byte-for-byte.
 
 ### Legacy Qwen experiment provenance
 
@@ -325,11 +358,12 @@ commit `c8ce0efd303eb618b1cfb84e8869a3d90bd050fc`, tagged `experiment-execution-
 
 ### Reproduce the legacy Qwen analysis
 
-The `langtrust-analyze` command reproduces the preserved legacy single-model
-Qwen analysis. It does not analyze the later G9C13 multi-model validation study.
+The `langtrust-analyze` command reproduces the preserved legacy
+single-model Qwen analysis. It does not analyze the later three-model validation
+study (internal study ID `G9C13`).
 
-After downloading the legacy Qwen result JSON files and `SHA256SUMS` into a
-local directory (see `ARTIFACTS.md` / Zenodo results record once published):
+Download the three legacy Qwen JSON files from the public results record
+[`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213) into a local artifact directory:
 
 ```bash
 ARTIFACT_DIR="$HOME/langtrust-artifacts"
@@ -342,33 +376,41 @@ langtrust-analyze \
   --outdir "$OUTDIR"
 ```
 
-Verify digests with `SHA256SUMS` before analysis (`sha256sum -c` on Linux,
-`shasum -a 256 -c` on macOS). Full workflow: `REPRODUCIBILITY.md`.
+Verify the three JSON SHA-256 digests against `ARTIFACTS.md` before analysis.
+If the complete Zenodo results record is downloaded, verify its published
+record-level manifest with `sha256sum -c SHA256SUMS.txt` on Linux or
+`shasum -a 256 -c SHA256SUMS.txt` on macOS. Full workflow:
+`REPRODUCIBILITY.md`.
 
 ### G9C13 multi-model validation study
 
-The SoftwareX validation study is the separately frozen G9C13 multi-model
-experiment. It uses Qwen 2.5 14B, Llama 3.1 8B, and Mistral 7B from the common
-canonical LangTrust source state:
+`G9C13` is an **internal study identifier** for the frozen three-model
+LangTrust validation campaign used as SoftwareX evidence; it is **not an
+acronym**. The study uses Qwen 2.5 14B, Llama 3.1 8B, and Mistral 7B. All three
+execution worktrees used the same exact LangTrust source commit and Git tree:
 
 - source commit: `ffac44664244399b9fee024762b0d8afdff8ec05`
 - source tree: `ef8c86ba2e8e9fee51f0f8a9a4cb8e326e34964d`
 - primary temperature: `0.2`
 - planned / collected primary records: `1920 / 1920`
 - inference-valid records: `1914`
-- technical missingness: `6`
+- technical-missing records: `6` (technical failures treated as missingness,
+  not recoded as security success)
 - inference-valid attack records: `1437`
 - inference-valid benign records: `477`
 - forbidden sandbox executions: `0`
 
-The frozen reproducibility package is
+The frozen, checksum-verified reproducibility package is
 `LANGTRUST_G9C13_REPRO_ARCHIVE_2026-09-15.tar.gz`, SHA-256
 `ecf8eaccd02dd4c7d01e7e7756e5fb1bdd8450beba4d362dc8625031de2e4aa2`.
 Its internal `SHA256SUMS.txt` contains 96 verified entries.
 
-G9C13 is distinct from the legacy Qwen dataset consumed by
-`langtrust-analyze`; the two evidence generations must not be pooled or treated
-as the same experiment.
+The archive is published in the same LangTrust evaluation-artifacts record:
+[`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213).
+
+The three-model validation study is distinct from the legacy Qwen dataset
+consumed by `langtrust-analyze`; the two evidence generations must not be pooled
+or treated as the same experiment.
 
 ## Release and archival status
 
@@ -377,11 +419,11 @@ as the same experiment.
 | Current public release | `v0.2.1` |
 | Package version | `0.2.1` |
 | GitHub repository | https://github.com/rafalgajos/langtrust |
-| Zenodo release DOI | [`10.5281/zenodo.22815398`](https://doi.org/10.5281/zenodo.22815398) |
-| Zenodo all-versions DOI | [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187) |
-| Zenodo results DOI | Not yet assigned |
+| Zenodo software release DOI | [`10.5281/zenodo.22815398`](https://doi.org/10.5281/zenodo.22815398) |
+| Zenodo software all-versions DOI | [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187) |
+| Zenodo evaluation-results DOI | [`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213) |
 | Software license | Apache-2.0 |
-| Python | `>= 3.11` (validated with 3.11.x) |
+| Python | `>= 3.11` (release QA validated with 3.11.x) |
 
 ## Repository structure
 
@@ -411,6 +453,7 @@ If you use LangTrust in research, cite the software release described in
 
 - Release DOI: [`10.5281/zenodo.22815398`](https://doi.org/10.5281/zenodo.22815398)
 - All-versions DOI: [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187)
+- Evaluation-results DOI: [`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213)
 - Source tag: [`v0.2.1`](https://github.com/rafalgajos/langtrust/tree/v0.2.1)
 
 Software author:
@@ -422,7 +465,7 @@ Engineering, Faculty of Electrical Engineering, Automatic Control and Computer
 Science, Kielce University of Technology, Kielce, Poland.
 
 Software citation metadata is distinct from authorship metadata for associated
-scholarly articles and from the separately planned results archive.
+scholarly articles and from the separately archived evaluation-results dataset.
 
 ## License
 

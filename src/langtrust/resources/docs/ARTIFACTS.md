@@ -3,15 +3,17 @@
 ## Purpose
 
 This document separates two LangTrust evidence generations: the preserved
-single-model Qwen dataset used by the legacy analysis CLI and the separately
-frozen G9C13 multi-model validation archive. It records how each evidence
-package is identified and verified.
+single-model Qwen dataset used by the legacy analysis command-line interface
+(CLI) and the separately frozen three-model validation archive. `G9C13` is the
+internal study identifier for that later validation campaign; it is not an
+acronym. This document records how each evidence package is identified,
+verified, and obtained.
 
 It distinguishes:
 
 - **legacy Qwen raw result artifacts** (immutable experiment JSON snapshots), and
-- **derived analysis outputs** (tables, summaries, and figures produced from those
-  snapshots).
+- **derived analysis outputs** (tables, summaries, and figures produced from
+  those snapshots).
 
 ## Evidence generations
 
@@ -20,20 +22,25 @@ LangTrust preserves two distinct experiment evidence generations:
 1. **Legacy Qwen study** — three JSON snapshots consumed by
    `langtrust-analyze`, with digests recorded in the repository-root
    `SHA256SUMS`.
-2. **G9C13 multi-model validation study** — a separately frozen reproducibility
-   archive containing Qwen, Llama, and Mistral primary runs, manifests,
-   provenance, analysis records, and publication tables.
+2. **Three-model validation study (internal study ID: G9C13)** — a separately
+   frozen reproducibility archive containing Qwen, Llama, and Mistral primary
+   runs, manifests, provenance, analysis records, and publication tables.
 
-The root `SHA256SUMS` belongs only to the legacy Qwen dataset. G9C13 carries its
-own internal `SHA256SUMS.txt`. These checksum manifests are intentionally
-separate.
+The repository-root `SHA256SUMS` belongs only to the legacy Qwen dataset. The
+three-model archive carries its own internal `SHA256SUMS.txt`. The public Zenodo
+results record additionally supplies a record-level `SHA256SUMS.txt`; these
+checksum manifests have different scopes and are intentionally distinct.
 
 ## Legacy Qwen experiment artifacts
 
-The three files below are the preserved legacy single-model Qwen result snapshots.
-They are **not** tracked in Git. They are intended for archival publication in a
-dedicated Zenodo results record. The DOI and download location will be added when
-that public archive is created.
+The three files below are the preserved legacy single-model Qwen result
+snapshots. They are **not** tracked in Git. They are publicly archived in the
+LangTrust evaluation-artifacts dataset:
+
+[`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213)
+
+Here **T** denotes sampling temperature and **N** denotes the number of
+seed-based repeats contributing to the stated experiment or summary.
 
 | Artifact | Role | T | N | Records | Valid | Invalid | SHA256 |
 |---|---|---:|---:|---:|---:|---:|---|
@@ -50,34 +57,39 @@ Notes:
 - **T=0.2, N=20** is a protected-invoice follow-up only. Combining it with the
   five protected invoice seeds from the main experiment yields a protected-only
   N=25 summary; that summary is **not** a paired N=25 baseline/protected design.
-- Episodes marked invalid above failed with `generation_limit` and are treated as
-  inference-invalid/censored. No favorable retry was used.
-- All consequential tool effects in these experiments occur inside the LangTrust
-  sandbox.
+- Episodes marked invalid above failed with `generation_limit` and are treated
+  as inference-invalid/censored. No favorable retry was used.
+- All consequential tool effects in these experiments occur inside the
+  LangTrust sandbox.
 
 ## Integrity verification
 
-The repository root integrity manifest `SHA256SUMS` belongs to this legacy Qwen dataset and lists the three filenames
-and their SHA-256 digests.
+The repository-root integrity manifest `SHA256SUMS` is a
+**legacy-Qwen-only** manifest listing the three JSON filenames and their
+SHA-256 digests.
 
-Verification must be performed in a directory that contains **both**
-`SHA256SUMS` and the three downloaded JSON files (for example after extracting
-the Zenodo artifact bundle). The raw JSON files are not present in a normal Git
-clone.
+For a legacy-only download, verify each JSON against the digests in the table
+above or against a copy of the repository-root `SHA256SUMS`.
+
+The public Zenodo evaluation-artifacts record
+[`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213) instead contains a broader
+`SHA256SUMS.txt` covering the published record files. After downloading the
+complete record:
 
 Linux:
 
 ```bash
-sha256sum -c SHA256SUMS
+sha256sum -c SHA256SUMS.txt
 ```
 
 macOS:
 
 ```bash
-shasum -a 256 -c SHA256SUMS
+shasum -a 256 -c SHA256SUMS.txt
 ```
 
-A matching digest is required before treating a downloaded legacy Qwen file as verified.
+A matching digest is required before treating a downloaded artifact as
+verified.
 
 ## Legacy Qwen experiment source provenance
 
@@ -114,14 +126,15 @@ Detailed provenance and public-history construction are documented in
 
 ## Obtaining the legacy Qwen artifacts
 
-1. Download the legacy Qwen result bundle from the dedicated Zenodo results
-   record (URL/DOI to be added when that Zenodo results record is published).
-2. Confirm the bundle contains the three JSON filenames listed above and
-   `SHA256SUMS`.
-3. Verify digests with the commands in [Integrity verification](#integrity-verification).
+1. Open the public LangTrust evaluation-artifacts record:
+   [`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213).
+2. Download the three legacy Qwen JSON files listed above.
+3. Verify their SHA-256 digests against the table in this document, or download
+   the complete record and verify its `SHA256SUMS.txt`.
+4. Run the analysis only after checksum verification succeeds.
 
-Optional copies of `ARTIFACTS.md` may accompany the Zenodo deposit for convenience.
-The Zenodo results record is the canonical archive for the legacy Qwen raw JSON files.
+The Zenodo results record is the public archival location for the legacy Qwen
+raw JSON files and the separately frozen three-model validation archive.
 
 ## Running the legacy Qwen analysis
 
@@ -166,8 +179,8 @@ For the published experiment release:
 
 ## Frozen G9C13 multi-model validation archive
 
-The G9C13 validation study is frozen independently from the legacy Qwen
-analysis dataset.
+The three-model validation study (internal study ID `G9C13`) is frozen
+independently from the legacy Qwen analysis dataset.
 
 Archive:
 
@@ -177,7 +190,7 @@ SHA-256:
 
 `ecf8eaccd02dd4c7d01e7e7756e5fb1bdd8450beba4d362dc8625031de2e4aa2`
 
-Canonical source:
+Exact study source state:
 
 - commit `ffac44664244399b9fee024762b0d8afdff8ec05`
 - tree `ef8c86ba2e8e9fee51f0f8a9a4cb8e326e34964d`
@@ -186,8 +199,9 @@ Primary collection:
 
 - 3/3 models complete
 - 1920/1920 records collected
-- 1914 inference-valid
-- 6 technical missingness
+- 1914 inference-valid records
+- 6 technical-missing records (technical failures treated as missingness rather
+  than security success)
 - 1437 inference-valid attack records
 - 477 inference-valid benign records
 - 0 forbidden sandbox executions
@@ -201,18 +215,31 @@ Primary raw-result SHA-256:
 - Mistral 7B:
   `2fe2f8d35db8dac6dd6c4f29c184e77d474f25e20bf8b7266883ec6d53735ac8`
 
-The archive has its own `SHA256SUMS.txt` with 96 verified entries and is
-independent of the repository-root legacy `SHA256SUMS`.
+The archive has its own internal `SHA256SUMS.txt` with 96 verified entries and
+is independent of the repository-root legacy `SHA256SUMS`.
+
+The outer archive is publicly preserved in the evaluation-artifacts record:
+[`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213).
 
 ## Citation and archival identifiers
 
-Cite the LangTrust software using `CITATION.cff`. The Zenodo software release DOI
-`10.5281/zenodo.22799188` identifies the published `0.2.0` software archive.
-The all-versions DOI is `10.5281/zenodo.22799187`.
+Cite the current LangTrust software release using `CITATION.cff`.
 
-The legacy Qwen result bundle is intended to receive a separate Zenodo
-results DOI. The SoftwareX article DOI, when assigned, will be a third, distinct
+- current software release: LangTrust `v0.2.1`
+- exact software DOI: [`10.5281/zenodo.22815398`](https://doi.org/10.5281/zenodo.22815398)
+- software all-versions DOI:
+  [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187)
+- evaluation-results DOI:
+  [`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213)
+
+For historical provenance, the first public software release `v0.2.0` remains
+archived under DOI
+[`10.5281/zenodo.22799188`](https://doi.org/10.5281/zenodo.22799188).
+
+The SoftwareX article DOI, when assigned, will be a separate scholarly-article
 identifier.
 
-LangTrust software release metadata declares the Apache License 2.0.
-Software, experiment-data, and article archival identifiers remain distinct.
+LangTrust software release metadata declares Apache License 2.0. The
+evaluation-artifacts record lists both CC BY 4.0 and Apache-2.0 rights; LangTrust
+software content remains Apache-2.0. Software, experiment-data, and article
+archival identifiers remain distinct.

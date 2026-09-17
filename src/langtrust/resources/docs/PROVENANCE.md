@@ -2,16 +2,16 @@
 
 ## Scope
 
-This document records the scientific and software provenance of the LangTrust
-experiments and of the later release-preparation lineage. It identifies the
-exact internal revision that executed the legacy Qwen experiments, the
-associated source tree, model/runtime/protocol, and result artifacts, and it
-explains how the release repository will represent that history.
+This document records the scientific and software provenance of the
+LangTrust experiments and of the later release-preparation lineage. It
+identifies the exact internal revision that executed the legacy Qwen
+experiments, the associated source tree, model/runtime/protocol, and result
+artifacts, and explains how the release repository represents that history.
 
-The LangTrust release repository uses a curated publication history and will
+The LangTrust release repository uses a curated publication history and does
 not reproduce the complete internal development history. This is intentional:
-a clean publication history improves readability, while the exact experiment
-repository tree will be preserved separately and verifiably.
+a clean publication history improves readability, while exact experiment source
+states are preserved separately and verifiably.
 
 Development-process disclosures, when required, are handled in release
 documentation rather than in this file.
@@ -20,12 +20,13 @@ documentation rather than in this file.
 
 Two experiment generations are intentionally preserved.
 
-The **legacy Qwen study** is the historical single-model dataset associated with
-the repository-root `SHA256SUMS`, `langtrust-analyze`, and the existing
+The **legacy Qwen study** is the historical single-model dataset associated
+with the repository-root `SHA256SUMS`, `langtrust-analyze`, and the existing
 `analysis_outputs/` directory.
 
-The **G9C13 study** is the later frozen three-model validation campaign used for
-SoftwareX evidence. Its canonical source state is:
+The later **three-model validation study** uses the internal study identifier
+`G9C13`; `G9C13` is not an acronym. It is the frozen validation campaign used
+as SoftwareX evidence. Its exact source state is:
 
 - commit `ffac44664244399b9fee024762b0d8afdff8ec05`
 - tree `ef8c86ba2e8e9fee51f0f8a9a4cb8e326e34964d`
@@ -92,9 +93,9 @@ above.
 
 ## Legacy Qwen experiment protocol
 
-LangTrust evaluates tool-using LLM agents under indirect prompt injection in a
-controlled Polish–English design across three domains (invoice, calendar,
-files), with 64 unique design cells. Attack conditions independently vary
+LangTrust evaluates tool-using large language model (LLM) agents under
+indirect prompt injection in a controlled Polish–English design across three
+domains (invoice, calendar, files), with 64 unique design cells. Attack conditions independently vary
 relevant language surfaces (user instruction, tool description, untrusted
 content, and attack payload) as defined by the scenario protocol.
 
@@ -157,7 +158,8 @@ asset stability checked independently of later packaging and documentation work.
 
 ## G9C13 multi-model validation provenance
 
-G9C13 was executed from the common canonical LangTrust source state:
+The three-model validation study (`G9C13`) was executed from the same exact
+LangTrust source state across all three execution worktrees:
 
 - branch: `feature/qwen-agent-backend`
 - commit: `ffac44664244399b9fee024762b0d8afdff8ec05`
@@ -166,14 +168,13 @@ G9C13 was executed from the common canonical LangTrust source state:
 - models: Qwen 2.5 14B, Llama 3.1 8B, Mistral 7B
 - primary temperature: `0.2`
 
-All three execution worktrees used the same canonical source tree.
-
 Primary collection status:
 
 - 3/3 models complete
 - 1920/1920 planned records collected
 - 1914 inference-valid records
-- 6 technical-missing records
+- 6 technical-missing records (technical failures treated as missingness rather
+  than security success)
 - 1437 inference-valid attack records
 - 477 inference-valid benign records
 - 0 forbidden sandbox executions
@@ -206,6 +207,9 @@ Key frozen manifest SHA-256 identities:
 These frozen identities are independent of later packaging, documentation, and
 public-history preparation.
 
+The outer archive is publicly preserved in the LangTrust evaluation-artifacts
+record [`10.5281/zenodo.22817213`](https://doi.org/10.5281/zenodo.22817213).
+
 ## Release-preparation lineage
 
 The current internal release-preparation lineage is later than the experiment
@@ -222,13 +226,15 @@ These later changes improve packaging, usability, testing, and documentation.
 They do not redefine the provenance of the three legacy Qwen JSON artifacts
 or the separately frozen G9C13 validation archive.
 
-The public software release for users is LangTrust `v0.2.0`. The
-archival experiment source snapshot has a different role: exact historical
-source representation for audit/reproduction of the 2026 experiment state.
-Routine users should use the public software release rather than
-the archival snapshot, unless they specifically need the historical tree.
+The current public software release for users is LangTrust `v0.2.1`,
+published under tag `v0.2.1` with exact software DOI
+`10.5281/zenodo.22815398`. The archival experiment source snapshot has a different
+role: exact historical source representation for audit/reproduction of the
+2026 legacy experiment state. Routine users should use the current public
+software release rather than the archival snapshot unless they specifically
+need the historical tree.
 
-The public package version is `0.2.0`, released under tag `v0.2.0`.
+LangTrust `v0.2.0` remains the historical first public software release.
 
 ## Curated public Git history
 
@@ -237,10 +243,11 @@ not rewritten for publication.
 
 The LangTrust release repository is
 https://github.com/rafalgajos/langtrust. It uses a curated publication-oriented
-`main` history leading to LangTrust `v0.2.0`. That public `main` history does not
-reproduce every private development commit. The goal is publication clarity and
-a readable release history, while exact experiment source identity is preserved
-by the separate archival snapshot described below.
+`main` history that includes the public `v0.2.0` and `v0.2.1` releases. That
+public `main` history does not reproduce every private development commit. The
+goal is publication clarity and a readable release history, while exact
+experiment source identity is preserved by the separate archival snapshot
+described below.
 
 ## Legacy Qwen public archival experiment snapshot
 
@@ -283,33 +290,40 @@ The archival snapshot tree-equivalence check has been completed.
 - tree equivalence: **verified**
 
 The release repository URL is https://github.com/rafalgajos/langtrust.
-The Zenodo software release DOI `10.5281/zenodo.22799188` identifies the published `0.2.0`
-software archive. The all-versions DOI is `10.5281/zenodo.22799187`. The separate
-Zenodo results DOI has not yet been assigned.
+The current `v0.2.1` software release DOI is `10.5281/zenodo.22815398` and the
+software all-versions DOI is `10.5281/zenodo.22799187`. The historical `v0.2.0`
+software archive remains available under DOI `10.5281/zenodo.22799188`.
+The separate evaluation-results DOI is `10.5281/zenodo.22817213`.
 
 ## Version and archival identifiers
 
 | Identifier | Role | Status |
 |---|---|---|
-| Internal experiment revision `a0a6eb…` | Actual execution provenance | Established |
-| Experiment tree `9c1fd1c…` | Exact source-tree identity | Established |
-| Public release lineage (`0.2.0`) | Packaging/docs/release | Established |
-| Public tag `v0.2.0` | Recommended user software release | Established |
-| Public tag `experiment-execution-snapshot` | Archival source representation | Established |
-| Zenodo software DOI `10.5281/zenodo.22799188` | Software archive | Published |
-| Zenodo results DOI | Legacy Qwen JSON archive | Planned |
-| SoftwareX article DOI | Scholarly article | Planned |
+| Internal experiment revision `a0a6eb…` | Actual legacy-Qwen execution provenance | Established |
+| Experiment tree `9c1fd1c…` | Exact legacy-Qwen source-tree identity | Established |
+| Public tag `experiment-execution-snapshot` | Archival legacy source representation | Established |
+| Historical public tag `v0.2.0` | First public software release | Published |
+| Current public tag `v0.2.1` | Recommended user software release | Published |
+| Zenodo software DOI `10.5281/zenodo.22815398` | Current `v0.2.1` software archive | Published |
+| Zenodo software all-versions DOI `10.5281/zenodo.22799187` | Software concept / all versions | Published |
+| Zenodo evaluation-results DOI `10.5281/zenodo.22817213` | Legacy Qwen JSON + frozen three-model archive | Published |
+| SoftwareX article DOI | Scholarly article | Not yet assigned |
 | Apache-2.0 | Software license | Established |
 
 Authors and citation metadata are recorded in `CITATION.cff`.
 
 ## Limitations of provenance claims
 
-- Internal/public tree equivalence has been verified for the archival snapshot;
-  this establishes source-tree identity, not execution-environment identity.
-- GitHub repository: https://github.com/rafalgajos/langtrust; Zenodo software release DOI `10.5281/zenodo.22799188` is published and the all-versions DOI is `10.5281/zenodo.22799187`, while the Zenodo results DOI and SoftwareX article DOI are not yet assigned.
-- LangTrust `v0.2.0` is the first public software release.
+- Internal/public tree equivalence has been verified for the legacy archival
+  snapshot; this establishes source-tree identity, not execution-environment
+  identity.
+- The current public software release is `v0.2.1`, DOI `10.5281/zenodo.22815398`; the
+  software all-versions DOI is `10.5281/zenodo.22799187`.
+- The evaluation-results record is published under DOI `10.5281/zenodo.22817213`.
+- LangTrust `v0.2.0` is the historical first public software release; its exact
+  archive DOI is `10.5281/zenodo.22799188`.
+- The SoftwareX article DOI has not yet been assigned.
 - The software release is licensed under Apache-2.0.
 - This document establishes the source, runtime, and protocol associated with
   the reported experiments. It does not claim universal bit-for-bit
-  reproducibility across all hardware, OS, or Ollama versions.
+  reproducibility across all hardware, operating systems, or Ollama versions.
