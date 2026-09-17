@@ -232,36 +232,25 @@ desktop environment.
 
 ## Architecture
 
-```text
-Legitimate user task --------\
-                              \
-                               v
-                         Agent / LLM
-                               ^
-                              /
-Untrusted content / IPI -----/
-                               |
-                               v
-                     Native tool request
-                               |
-                               v
-                      ToolPolicyEngine
-                               |
-                               v
-                  Sandboxed tool execution
-                               |
-                               v
-                    Evaluation and metrics
-```
+<p align="center">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="docs/assets/architecture/langtrust-architecture-dark.svg"
+    >
+    <img
+      src="docs/assets/architecture/langtrust-architecture-light.svg"
+      alt="LangTrust evaluation architecture: legitimate tasks and untrusted indirect prompt-injection content reach the agent, while consequential tool requests pass through runtime policy enforcement before sandbox execution"
+      width="900"
+    >
+  </picture>
+</p>
 
-Indirect prompt-injection content is presented to the agent as untrusted
-content rather than as part of the legitimate user task. Consequential native
-tool requests are evaluated by the runtime `ToolPolicyEngine` before sandbox
-execution.
-
-This separation allows LangTrust to measure **model susceptibility**, **runtime
-blocking**, **task success**, and **consequential-action fidelity** as distinct
-properties rather than collapsing them into a single success metric.
+LangTrust keeps **model susceptibility**, **runtime blocking**, **task success**,
+and **consequential-action fidelity** as separate observables. Indirect
+prompt-injection content is treated as untrusted content rather than as part of
+the legitimate user task, while consequential native tool requests pass through
+the runtime `ToolPolicyEngine` before sandbox execution.
 
 ## Development and testing
 

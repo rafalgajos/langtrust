@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="460" viewBox="0 0 960 460" role="img" aria-labelledby="title desc">
+  <title id="title">LangTrust evaluation architecture</title>
+  <desc id="desc">Legitimate user tasks and untrusted indirect prompt-injection content converge on an agent. Native tool requests pass through ToolPolicyEngine before sandboxed execution. Susceptibility, runtime blocking, task success, and action fidelity are evaluated separately.</desc>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#9198A1"/>
+    </marker>
+    <style>
+      .title { font: 600 18px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill: #F0F6FC; }
+      .label { font: 600 16px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill: #F0F6FC; }
+      .sub { font: 400 13px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill: #9198A1; }
+      .metric { font: 500 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill: #F0F6FC; }
+      .tiny { font: 600 11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill: #9198A1; letter-spacing: .6px; }
+      .flow { fill: none; stroke: #9198A1; stroke-width: 2; stroke-linecap: round; marker-end: url(#arrow); }
+      .observe { fill: none; stroke: #30363D; stroke-width: 1.5; stroke-dasharray: 5 6; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <rect x="1" y="1" width="958" height="458" rx="22" fill="#0D1117" stroke="#30363D"/>
+
+  <text x="54" y="36" class="tiny">INPUTS</text>
+  <text x="610" y="165" class="tiny">MEASURED SEPARATELY</text>
+
+  <rect x="54" y="50" width="270" height="66" rx="14" fill="#161B22" stroke="#30363D"/>
+  <circle cx="78" cy="72" r="5" fill="#E3B341"/>
+  <text x="94" y="78" class="label">Legitimate user task</text>
+  <text x="78" y="99" class="sub">intended instruction and goal</text>
+
+  <rect x="364" y="50" width="270" height="66" rx="14" fill="#161B22" stroke="#E3B341" stroke-width="1.5"/>
+  <circle cx="388" cy="72" r="5" fill="#E3B341"/>
+  <text x="404" y="78" class="label">Untrusted content / IPI</text>
+  <text x="388" y="99" class="sub">tool result, document, external text</text>
+
+  <path class="flow" d="M189 116 C189 132 300 128 344 145"/>
+  <path class="flow" d="M499 116 C499 132 388 128 344 145"/>
+
+  <rect x="214" y="145" width="260" height="62" rx="14" fill="#161B22" stroke="#30363D"/>
+  <text x="344" y="173" text-anchor="middle" class="label">Agent / LLM</text>
+  <text x="344" y="193" text-anchor="middle" class="sub">reasoning + native tool calling</text>
+
+  <path class="flow" d="M344 207 L344 231"/>
+  <rect x="214" y="231" width="260" height="62" rx="14" fill="#161B22" stroke="#30363D"/>
+  <text x="344" y="259" text-anchor="middle" class="label">Native tool request</text>
+  <text x="344" y="279" text-anchor="middle" class="sub">requested consequential action</text>
+
+  <path class="flow" d="M344 293 L344 317"/>
+  <rect x="214" y="317" width="260" height="62" rx="14" fill="#2B2300" stroke="#E3B341" stroke-width="1.5"/>
+  <text x="344" y="345" text-anchor="middle" class="label">ToolPolicyEngine</text>
+  <text x="344" y="365" text-anchor="middle" class="sub">authorize or block before execution</text>
+
+  <path class="flow" d="M344 379 L344 403"/>
+  <rect x="214" y="403" width="260" height="42" rx="14" fill="#161B22" stroke="#30363D"/>
+  <text x="344" y="429" text-anchor="middle" class="label">Sandboxed tool execution</text>
+
+  <rect x="596" y="180" width="310" height="234" rx="16" fill="#0D1117" stroke="#30363D"/>
+  <text x="622" y="212" class="title">Evaluation and metrics</text>
+
+  <circle cx="625" cy="246" r="4" fill="#E3B341"/>
+  <text x="640" y="251" class="metric">Model susceptibility / UTRR</text>
+
+  <circle cx="625" cy="286" r="4" fill="#E3B341"/>
+  <text x="640" y="291" class="metric">Runtime blocking</text>
+
+  <circle cx="625" cy="326" r="4" fill="#E3B341"/>
+  <text x="640" y="331" class="metric">Task success</text>
+
+  <circle cx="625" cy="366" r="4" fill="#E3B341"/>
+  <text x="640" y="371" class="metric">Consequential-action fidelity</text>
+
+  <text x="622" y="397" class="sub">No single aggregate security score.</text>
+
+  <path class="observe" d="M474 262 L596 262"/>
+  <path class="observe" d="M474 348 L596 348"/>
+  <path class="observe" d="M474 424 C530 424 548 390 596 390"/>
+</svg>
