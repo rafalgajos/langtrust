@@ -67,7 +67,7 @@ and separately evaluates whether consequential actions are correct.
   <img
     src="docs/assets/demo/langtrust-demo.gif"
     alt="LangTrust v0.2.0 protected indirect prompt-injection evaluation in the desktop GUI"
-    width="896"
+    width="820"
   >
 </p>
 
