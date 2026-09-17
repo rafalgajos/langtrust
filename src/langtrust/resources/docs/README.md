@@ -24,8 +24,8 @@
   <a href="https://doi.org/10.5281/zenodo.22799187">
     <img src="https://img.shields.io/badge/DOI-10.5281%2Fzenodo.22799187-1682D4.svg" alt="DOI: 10.5281/zenodo.22799187">
   </a>
-  <a href="https://github.com/rafalgajos/langtrust/tree/v0.2.0">
-    <img src="https://img.shields.io/badge/release-v0.2.0-2ea44f.svg" alt="Release v0.2.0">
+  <a href="https://github.com/rafalgajos/langtrust/tree/v0.2.1">
+    <img src="https://img.shields.io/badge/release-v0.2.1-2ea44f.svg" alt="Release v0.2.1">
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="Apache License 2.0">
@@ -66,7 +66,7 @@ and separately evaluates whether consequential actions are correct.
 <p align="center">
   <img
     src="docs/assets/demo/langtrust-demo.gif"
-    alt="LangTrust v0.2.0 protected indirect prompt-injection evaluation in the desktop GUI"
+    alt="LangTrust protected indirect prompt-injection evaluation in the desktop GUI"
     width="680"
   >
 </p>
@@ -139,12 +139,12 @@ fixed defense-language condition, not language-matched protection).
 
 ## Installation
 
-LangTrust `v0.2.0` supports Python **3.11 or newer**.
+LangTrust `v0.2.1` supports Python **3.11 or newer**.
 
 ### Install from the tagged source release
 
 ```bash
-git clone --branch v0.2.0 --depth 1 https://github.com/rafalgajos/langtrust.git
+git clone --branch v0.2.1 --depth 1 https://github.com/rafalgajos/langtrust.git
 cd langtrust
 
 python -m venv .venv
@@ -161,7 +161,7 @@ On Windows, activate the environment with:
 ### Install directly from GitHub
 
 ```bash
-python -m pip install "git+https://github.com/rafalgajos/langtrust.git@v0.2.0"
+python -m pip install "git+https://github.com/rafalgajos/langtrust.git@v0.2.1"
 ```
 
 For development and the full test suite:
@@ -374,10 +374,10 @@ as the same experiment.
 
 | Item | Status |
 |---|---|
-| Current public release | `v0.2.0` |
-| Package version | `0.2.0` |
+| Current public release | `v0.2.1` |
+| Package version | `0.2.1` |
 | GitHub repository | https://github.com/rafalgajos/langtrust |
-| Zenodo release DOI | [`10.5281/zenodo.22799188`](https://doi.org/10.5281/zenodo.22799188) |
+| Zenodo release DOI | [`10.5281/zenodo.22815398`](https://doi.org/10.5281/zenodo.22815398) |
 | Zenodo all-versions DOI | [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187) |
 | Zenodo results DOI | Not yet assigned |
 | Software license | Apache-2.0 |
@@ -407,11 +407,11 @@ https://github.com/rafalgajos/langtrust/issues
 If you use LangTrust in research, cite the software release described in
 `CITATION.cff`.
 
-**LangTrust v0.2.0**
+**LangTrust v0.2.1**
 
-- Release DOI: [`10.5281/zenodo.22799188`](https://doi.org/10.5281/zenodo.22799188)
+- Release DOI: [`10.5281/zenodo.22815398`](https://doi.org/10.5281/zenodo.22815398)
 - All-versions DOI: [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187)
-- Source tag: [`v0.2.0`](https://github.com/rafalgajos/langtrust/tree/v0.2.0)
+- Source tag: [`v0.2.1`](https://github.com/rafalgajos/langtrust/tree/v0.2.1)
 
 Software author:
 

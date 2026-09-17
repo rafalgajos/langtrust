@@ -2,11 +2,11 @@ cff-version: 1.2.0
 message: "If you use LangTrust in your research, please cite this software."
 title: LangTrust
 type: software
-version: 0.2.0
+version: 0.2.1
 license: Apache-2.0
 repository-code: "https://github.com/rafalgajos/langtrust"
-doi: "10.5281/zenodo.22799188"
-date-released: 2026-09-16
+doi: "10.5281/zenodo.22815398"
+date-released: 2026-09-17
 authors:
   - given-names: Rafał
     family-names: Gajos
