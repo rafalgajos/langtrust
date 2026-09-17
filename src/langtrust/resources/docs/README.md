@@ -36,6 +36,8 @@
 </p>
 
 <p align="center">
+  <a href="#demo">Demo</a>
+  ·
   <a href="#installation">Installation</a>
   ·
   <a href="#quick-start">Quick start</a>
@@ -58,6 +60,23 @@ A central design principle is that **model behavior, runtime safety, and task
 correctness are not the same quantity**: LangTrust records unauthorized native
 tool requests before enforcement, observes whether runtime policy blocks them,
 and separately evaluates whether consequential actions are correct.
+
+## Demo
+
+<p align="center">
+  <img
+    src="docs/assets/demo/langtrust-demo.gif"
+    alt="LangTrust v0.2.0 protected indirect prompt-injection evaluation in the desktop GUI"
+    width="896"
+  >
+</p>
+
+<p align="center">
+  <sub>
+    Protected live run: the agent ignores an indirect prompt-injection
+    instruction while completing the legitimate task.
+  </sub>
+</p>
 
 ## Highlights
 
