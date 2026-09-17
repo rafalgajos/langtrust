@@ -49,7 +49,7 @@ def package_version() -> str:
     try:
         return metadata.version("langtrust")
     except metadata.PackageNotFoundError:
-        return "0.2.0"
+        return "0.2.1"
 
 
 def list_pair_ids(scenario_dir: str | Path | None = None) -> list[str]:
