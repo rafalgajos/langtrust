@@ -225,8 +225,8 @@ The outer archive is publicly preserved in the evaluation-artifacts record:
 
 Cite the current LangTrust software release using `CITATION.cff`.
 
-- current software release: LangTrust `v0.2.1`
-- exact software DOI: [`10.5281/zenodo.22815398`](https://doi.org/10.5281/zenodo.22815398)
+- current software release: LangTrust `v0.2.2`
+- exact software DOI: [`10.5281/zenodo.22833384`](https://doi.org/10.5281/zenodo.22833384)
 - software all-versions DOI:
   [`10.5281/zenodo.22799187`](https://doi.org/10.5281/zenodo.22799187)
 - evaluation-results DOI:
@@ -235,6 +235,8 @@ Cite the current LangTrust software release using `CITATION.cff`.
 For historical provenance, the first public software release `v0.2.0` remains
 archived under DOI
 [`10.5281/zenodo.22799188`](https://doi.org/10.5281/zenodo.22799188).
+The preceding `v0.2.1` software release remains archived under DOI
+[`10.5281/zenodo.22815398`](https://doi.org/10.5281/zenodo.22815398).
 
 The SoftwareX article DOI, when assigned, will be a separate scholarly-article
 identifier.

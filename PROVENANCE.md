@@ -226,15 +226,17 @@ These later changes improve packaging, usability, testing, and documentation.
 They do not redefine the provenance of the three legacy Qwen JSON artifacts
 or the separately frozen G9C13 validation archive.
 
-The current public software release for users is LangTrust `v0.2.1`,
-published under tag `v0.2.1` with exact software DOI
-`10.5281/zenodo.22815398`. The archival experiment source snapshot has a different
+The current public software release for users is LangTrust `v0.2.2`,
+published under tag `v0.2.2` with exact software DOI
+`10.5281/zenodo.22833384`. The archival experiment source snapshot has a different
 role: exact historical source representation for audit/reproduction of the
 2026 legacy experiment state. Routine users should use the current public
 software release rather than the archival snapshot unless they specifically
 need the historical tree.
 
 LangTrust `v0.2.0` remains the historical first public software release.
+LangTrust `v0.2.1` remains the preceding public software release, archived under
+DOI `10.5281/zenodo.22815398`.
 
 ## Curated public Git history
 
@@ -243,7 +245,7 @@ not rewritten for publication.
 
 The LangTrust release repository is
 https://github.com/rafalgajos/langtrust. It uses a curated publication-oriented
-`main` history that includes the public `v0.2.0` and `v0.2.1` releases. That
+`main` history that includes the public `v0.2.0`, `v0.2.1`, and `v0.2.2` releases. That
 public `main` history does not reproduce every private development commit. The
 goal is publication clarity and a readable release history, while exact
 experiment source identity is preserved by the separate archival snapshot
@@ -290,7 +292,7 @@ The archival snapshot tree-equivalence check has been completed.
 - tree equivalence: **verified**
 
 The release repository URL is https://github.com/rafalgajos/langtrust.
-The current `v0.2.1` software release DOI is `10.5281/zenodo.22815398` and the
+The current `v0.2.2` software release DOI is `10.5281/zenodo.22833384` and the
 software all-versions DOI is `10.5281/zenodo.22799187`. The historical `v0.2.0`
 software archive remains available under DOI `10.5281/zenodo.22799188`.
 The separate evaluation-results DOI is `10.5281/zenodo.22817213`.
@@ -303,8 +305,10 @@ The separate evaluation-results DOI is `10.5281/zenodo.22817213`.
 | Experiment tree `9c1fd1c…` | Exact legacy-Qwen source-tree identity | Established |
 | Public tag `experiment-execution-snapshot` | Archival legacy source representation | Established |
 | Historical public tag `v0.2.0` | First public software release | Published |
-| Current public tag `v0.2.1` | Recommended user software release | Published |
-| Zenodo software DOI `10.5281/zenodo.22815398` | Current `v0.2.1` software archive | Published |
+| Historical public tag `v0.2.1` | Previous public software release | Published |
+| Current public tag `v0.2.2` | Recommended user software release | Published |
+| Zenodo software DOI `10.5281/zenodo.22815398` | Historical `v0.2.1` software archive | Published |
+| Zenodo software DOI `10.5281/zenodo.22833384` | Current `v0.2.2` software archive | Published |
 | Zenodo software all-versions DOI `10.5281/zenodo.22799187` | Software concept / all versions | Published |
 | Zenodo evaluation-results DOI `10.5281/zenodo.22817213` | Legacy Qwen JSON + frozen three-model archive | Published |
 | SoftwareX article DOI | Scholarly article | Not yet assigned |
@@ -317,11 +321,13 @@ Authors and citation metadata are recorded in `CITATION.cff`.
 - Internal/public tree equivalence has been verified for the legacy archival
   snapshot; this establishes source-tree identity, not execution-environment
   identity.
-- The current public software release is `v0.2.1`, DOI `10.5281/zenodo.22815398`; the
+- The current public software release is `v0.2.2`, DOI `10.5281/zenodo.22833384`; the
   software all-versions DOI is `10.5281/zenodo.22799187`.
 - The evaluation-results record is published under DOI `10.5281/zenodo.22817213`.
 - LangTrust `v0.2.0` is the historical first public software release; its exact
   archive DOI is `10.5281/zenodo.22799188`.
+- LangTrust `v0.2.1` is the preceding public software release; its exact archive
+  DOI is `10.5281/zenodo.22815398`.
 - The SoftwareX article DOI has not yet been assigned.
 - The software release is licensed under Apache-2.0.
 - This document establishes the source, runtime, and protocol associated with

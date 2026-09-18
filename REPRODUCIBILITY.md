@@ -33,7 +33,7 @@ require Ollama, GPU hardware, or model inference.
 
 ### B. Software / protocol reproduction
 
-Install the current public LangTrust release (`v0.2.1`), inspect packaged
+Install the current public LangTrust release (`v0.2.2`), inspect packaged
 language/scenario resources, run the command-line interfaces (CLIs), and run
 the test suite.
 
@@ -349,7 +349,7 @@ commit is a source-tree-equivalent representation of that historical state, not
 the historical execution environment itself.
 
 For routine analysis reproduction, prefer the current public software
-release (`v0.2.1`). Use the archival snapshot for historical audit or
+release (`v0.2.2`). Use the archival snapshot for historical audit or
 re-execution attempts.
 
 The LangTrust release repository at https://github.com/rafalgajos/langtrust
@@ -360,10 +360,12 @@ via the archival snapshot.
 ## Reproducibility limits
 
 - GitHub repository: https://github.com/rafalgajos/langtrust.
-- The current public software release is `v0.2.1`, exact DOI `10.5281/zenodo.22815398`;
+- The current public software release is `v0.2.2`, exact DOI `10.5281/zenodo.22833384`;
   the software all-versions DOI is `10.5281/zenodo.22799187`.
 - The public evaluation-results record is DOI `10.5281/zenodo.22817213`.
 - LangTrust `v0.2.0` remains the historical first public software release.
+- LangTrust `v0.2.1` remains the preceding public software release, exact DOI
+  `10.5281/zenodo.22815398`.
 - The archival experiment commit/tag exists and legacy source-tree equivalence
   is verified.
 - Desktop GUI Live Run does not provide hard cancellation of an in-flight model
@@ -384,8 +386,10 @@ via the archival snapshot.
 | Experiment tree `9c1fd1c…` | Exact legacy-Qwen source-tree identity | Established |
 | Public tag `experiment-execution-snapshot` | Archival source representation | Established |
 | Historical public tag `v0.2.0` | First public software release | Published |
-| Current public tag `v0.2.1` | Recommended user software release | Published |
-| Zenodo software DOI `10.5281/zenodo.22815398` | Current software archive | Published |
+| Historical public tag `v0.2.1` | Previous public software release | Published |
+| Current public tag `v0.2.2` | Recommended user software release | Published |
+| Zenodo software DOI `10.5281/zenodo.22815398` | Historical `v0.2.1` software archive | Published |
+| Zenodo software DOI `10.5281/zenodo.22833384` | Current software archive | Published |
 | Zenodo software all-versions DOI `10.5281/zenodo.22799187` | Software concept / all versions | Published |
 | Zenodo evaluation-results DOI `10.5281/zenodo.22817213` | Legacy Qwen + frozen three-model evidence | Published |
 | SoftwareX article DOI | Scholarly article | Not yet assigned |
